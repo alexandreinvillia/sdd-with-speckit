@@ -95,8 +95,7 @@ docs/
   copilot-instructions.md  ← Criado no Passo 0 (integration install)
   prompts/           ← Criado no Passo 0 (integration install)
   agents/            ← Criado no Passo 0 (integration install)
-.specs/
-  constitution.md    ← Criado na Etapa 1
+Constituicao do projeto  ← Gerada na Etapa 1 com /speckit.constitution
 app/
   main.py            ← Criado na Etapa 6
 tests/
@@ -163,7 +162,7 @@ Python 3.11 + FastAPI, armazenamento em memória, sem autenticação, sem banco 
 status HTTP corretos e código acessível para iniciantes.
 ```
 
-**Resultado esperado:** arquivo `.specs/constitution.md` criado com as diretrizes do projeto. A partir daqui, o Copilot referencia essas regras automaticamente nos próximos comandos Spec Kit.
+**Resultado esperado:** arquivo de constituicao do projeto gerado com as diretrizes definidas na turma. A partir daqui, o Copilot referencia essas regras automaticamente nos proximos comandos Spec Kit.
 
 > **Conexão com o mundo real:** em times reais, as convenções do projeto ficam documentadas para que todos os desenvolvedores — e o Copilot — tomem decisões consistentes desde o início.
 
@@ -447,7 +446,7 @@ Ao concluir, você terá:
 | Artefato                   | Propósito                              |
 |----------------------------|----------------------------------------|
 
-| `.specs/constitution.md`   | Regras e convenções do projeto         |
+| `Constituicao do projeto`  | Regras e convenções do projeto         |
 | `.specs/spec.yaml`         | Proposta e escopo do sistema           |
 | `.specs/requirements.md`   | O que o sistema deve fazer             |
 | `.specs/design.md`         | Como o sistema será construído         |
