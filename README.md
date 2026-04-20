@@ -4,7 +4,6 @@
 
 Você irá construir uma **API de gestão de tarefas (To-Do)** usando:
 
-- **Python + FastAPI** (mínimo necessário)
 - **GitHub Copilot** (Chat + sugestões inline)
 - **Spec Kit** (fluxo SDD estruturado)
 
@@ -48,6 +47,7 @@ specify integration install copilot
 ```
 
 Esse passo cria a pasta `.specify/` e instala os arquivos `.prompt.md` em `.github/copilot/`, habilitando os comandos slash do Spec Kit no Copilot Chat.
+Esse passo cria a pasta `.specify/` e configura o Copilot com arquivos em `.github/prompts/`, `.github/agents/` e `.github/copilot-instructions.md`, habilitando os comandos slash do Spec Kit no Copilot Chat.
 
 **Observação:** neste momento você ainda não executa a API, porque o `app/main.py`
 será criado na Etapa 6.
@@ -76,7 +76,9 @@ Use estes comandos no Copilot Chat durante o hands-on (dentro do Codespace):
 ```
 .specify/            ← Criado no Passo 0 pelo specify init
 .github/
-  copilot/           ← Criado no Passo 0 pela integração com Copilot
+  copilot-instructions.md  ← Diretrizes gerais para o Copilot
+  prompts/           ← Prompts slash do Spec Kit
+  agents/            ← Agentes auxiliares do fluxo Spec Kit
 .specs/
   constitution.md    ← Regras do projeto (Etapa 1)
   spec.yaml          ← Proposta do sistema (Etapa 2)
@@ -119,7 +121,7 @@ O que pode variar sem problema:
 **O que fazer:**
 1. Execute `specify init . --script sh` no terminal do Codespace
 2. Execute `specify integration install copilot`
-3. Confirme que as pastas `.specify/` e `.github/copilot/` foram criadas
+3. Confirme que `.specify/`, `.github/prompts/`, `.github/agents/` e `.github/copilot-instructions.md` foram criados
 
 **Terminal:**
 ```bash
@@ -433,7 +435,9 @@ Ao concluir, você terá:
 | Artefato                   | Propósito                              |
 |----------------------------|----------------------------------------|
 | `.specify/`                | Configuração local do Spec Kit         |
-| `.github/copilot/`         | Comandos slash e prompts do Copilot    |
+| `.github/prompts/`         | Prompts slash do Spec Kit no Copilot   |
+| `.github/agents/`          | Agentes auxiliares do fluxo Spec Kit   |
+| `.github/copilot-instructions.md` | Instruções gerais do Copilot    |
 | `.specs/constitution.md`   | Regras e convenções do projeto         |
 | `.specs/spec.yaml`         | Proposta e escopo do sistema           |
 | `.specs/requirements.md`   | O que o sistema deve fazer             |
