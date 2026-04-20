@@ -11,7 +11,7 @@ Você irá construir uma **API de gestão de tarefas (To-Do)** usando:
 A ideia **não é codar muito** — é aprender o fluxo:
 
 ```
-Proposta → Spec → Design → Plano → Tasks → Código (via Copilot)
+Constituição → Proposta/Spec (refino) → Design → Plano → Tasks → Código (via Copilot)
 ```
 
 ## Nota Importante Sobre a Abordagem
@@ -20,7 +20,7 @@ Este treinamento usa **SDD em modo hibrido**:
 
 - O repositorio traz um baseline minimo em `.specs/` (ponto de partida comum)
 - A turma refina esse baseline com Spec Kit + Copilot durante o hands-on
-- O codigo nasce apenas na Etapa 5, guiado pelos artefatos refinados
+- O codigo nasce apenas na Etapa 6, guiado pelos artefatos refinados
 
 > Em times reais, esse fluxo reduz ambiguidade, alinha expectativas antes de escrever
 > uma linha de código e torna o Copilot muito mais preciso — porque ele recebe contexto,
@@ -47,7 +47,7 @@ uvx --from git+https://github.com/github/spec-kit.git specify init . --script sh
 ```
 
 **Observação:** neste momento você ainda não executa a API, porque o `app/main.py`
-será criado na Etapa 5.
+será criado na Etapa 6.
 
 **Neste hands-on, vamos conduzir todas as etapas (spec, requisitos, design, tasks, testes e código)
 dentro do próprio Codespace para manter o fluxo unificado para toda a turma.**
@@ -57,7 +57,7 @@ dentro do próprio Codespace para manter o fluxo unificado para toda a turma.**
 Use estes comandos no Copilot Chat durante o hands-on (dentro do Codespace):
 
 1. Definir regras do projeto: `/speckit.constitution`
-2. Criar proposta: `/speckit.specify`
+2. Refinar proposta existente: `/speckit.specify`
 3. Refinar ambiguidade: `/speckit.clarify`
 4. Validar checklist da spec: `/speckit.checklist`
 5. Gerar plano tecnico: `/speckit.plan`
@@ -71,12 +71,12 @@ Use estes comandos no Copilot Chat durante o hands-on (dentro do Codespace):
 
 ```
 .specs/
-  spec.yaml          ← Proposta do sistema (Etapa 1)
-  requirements.md    ← Requisitos funcionais (Etapa 2)
-  design.md          ← Design técnico (Etapa 3)
-  tasks.md           ← Plano de implementação (Etapa 4)
+  spec.yaml          ← Proposta do sistema (Etapa 2)
+  requirements.md    ← Requisitos funcionais (Etapa 3)
+  design.md          ← Design técnico (Etapa 4)
+  tasks.md           ← Plano de implementação (Etapa 5)
 app/
-  main.py            ← Criado somente na Etapa 5
+  main.py            ← Criado somente na Etapa 6
 docs/
   copilot-prompts.md ← Prompts prontos para usar com Copilot
 ```
@@ -102,21 +102,46 @@ O que pode variar sem problema:
 
 ---
 
-## Etapa 1 — Criar a Proposta (`spec.yaml`)
+## Etapa 1 — Definir a Constituição do Projeto (`/speckit.constitution`)
 
-**Objetivo:** Definir o sistema antes de escrever qualquer código.
+**Objetivo:** Estabelecer as regras do projeto antes de refinar qualquer artefato — stack, limites técnicos, critérios de qualidade e princípios de implementação.
+
+> **Importante:** a constituição não altera os arquivos em `.specs/`. Ela cria o arquivo `.github/copilot-instructions.md`, que define como o Copilot vai se comportar em todo o projeto. São artefatos distintos e complementares.
+
+**O que fazer:**
+1. Execute `/speckit.constitution` no Copilot Chat
+2. Defina as regras do hands-on (Python 3.11 + FastAPI, sem autenticação, sem banco, código didático)
+3. Revise com a turma — esse arquivo guiará o Copilot nas próximas etapas
+
+**Copilot Chat — Spec Kit:**
+```
+/speckit.constitution Defina as regras deste projeto:
+Python 3.11 + FastAPI, armazenamento em memória, sem autenticação, sem banco de dados,
+status HTTP corretos e código acessível para iniciantes.
+```
+
+**Resultado esperado:** arquivo `.github/copilot-instructions.md` criado com as diretrizes do projeto. A partir daqui, o Copilot segue essas regras automaticamente.
+
+> **Conexão com o mundo real:** em times reais, as convenções do projeto ficam documentadas para que todos os desenvolvedores — e o Copilot — tomem decisões consistentes desde o início.
+
+---
+
+## Etapa 2 — Refinar a Proposta (`spec.yaml`)
+
+**Objetivo:** Refinar o baseline de proposta já existente, em vez de criar do zero.
 
 **O que fazer:**
 1. Abra `.specs/spec.yaml`
 2. Revise o baseline minimo ja definido
-3. Refine descricao, contexto e limites com Copilot Chat
+3. Use `/speckit.specify` para refinar descricao, contexto, escopo e fora de escopo
 4. Ajuste `author` e `updated_at`
+5. Valide se o texto continua alinhado à constituição definida na Etapa 1
 
 **Copilot Chat — Spec Kit:**
 ```
-/speckit.specify Build a simple Task Manager API for personal tasks.
-Users can create, list, update status and delete tasks.
-No authentication and no database for this training.
+/speckit.specify Refine o baseline em .specs/spec.yaml para uma API de tarefas pessoais.
+Usuários podem criar, listar, atualizar status e remover tarefas.
+Sem autenticação e sem banco de dados. Mantenha compatibilidade com a constituição do projeto.
 ```
 
 **Resultado esperado:** `spec.yaml` refinado, mantendo o baseline comum e alinhando escopo com o grupo.
@@ -126,7 +151,7 @@ No authentication and no database for this training.
 
 ---
 
-## Etapa 2 — Refinar Requisitos (`requirements.md`)
+## Etapa 3 — Refinar Requisitos (`requirements.md`)
 
 **Objetivo:** Transformar a proposta em requisitos concretos com critérios de aceite.
 
@@ -151,7 +176,7 @@ No authentication and no database for this training.
 
 ---
 
-## Etapa 3 — Criar o Design Técnico (`design.md`)
+## Etapa 4 — Criar o Design Técnico (`design.md`)
 
 **Objetivo:** Decidir como o sistema será construído (endpoints, modelos, estratégia de dados).
 
@@ -173,7 +198,7 @@ Define endpoints and data models from the approved requirements.
 
 ---
 
-## Etapa 4 — Gerar o Plano de Tasks (`tasks.md`)
+## Etapa 5 — Gerar o Plano de Tasks (`tasks.md`)
 
 **Objetivo:** Quebrar o design em tarefas pequenas e executáveis.
 
@@ -197,7 +222,7 @@ Define endpoints and data models from the approved requirements.
 
 ---
 
-## Etapa 5 — Implementar com Copilot (criar `app/main.py`)
+## Etapa 6 — Implementar com Copilot (criar `app/main.py`)
 
 **Objetivo:** Usar os artefatos de spec como contexto para o Copilot gerar código preciso.
 
@@ -331,14 +356,41 @@ Return 204 on success, 404 if not found.
 
 ---
 
-## Etapa 6 — Validar com os Requisitos
+## Etapa 7 — Criar e Executar Testes (`TASK-08`)
+
+**Objetivo:** Garantir que a API funciona conforme o especificado, criando testes automatizados.
+
+**O que fazer:**
+1. Crie o arquivo `tests/test_api.py`
+2. Use o Copilot para gerar os testes a partir dos critérios de aceite
+3. Execute e valide que todos passam
+
+**Copilot Chat:**
+```
+Com base nos critérios de aceite em .specs/requirements.md, crie testes automatizados
+para todos os endpoints em app/main.py usando pytest e httpx (TestClient do FastAPI).
+```
+
+**Rodar os testes:**
+```bash
+pytest tests/ -v
+```
+
+**Resultado esperado:** todos os testes passando, cobrindo os 5 endpoints (GET /, POST/GET/PATCH/DELETE /tasks).
+
+> **Conexão com o mundo real:** testes gerados a partir da spec fecham o ciclo SDD — o código
+> foi escrito para atender a spec, e os testes provam que ele realmente atende.
+
+---
+
+## Etapa 8 — Validar com os Requisitos
 
 **Objetivo:** Confirmar que o código entrega o que foi especificado.
 
 **Prompt Copilot:**
 ```
-@workspace Review app/main.py against the acceptance criteria in .specs/requirements.md
-and tell me if any requirement is missing or incorrectly implemented
+@workspace Revise app/main.py contra os critérios de aceite em .specs/requirements.md
+e me diga se algum requisito está faltando ou foi implementado de forma incorreta
 ```
 
 **Resultado esperado:** Copilot compara artefato de spec com código e aponta gaps — sem você precisar fazer isso manualmente.
@@ -356,6 +408,7 @@ Ao concluir, você terá:
 | `.specs/design.md`         | Como o sistema será construído         |
 | `.specs/tasks.md`          | Plano de execução incremental          |
 | `app/main.py`              | API funcional gerada com Copilot       |
+| `tests/test_api.py`        | Testes gerados a partir da spec        |
 | `docs/copilot-prompts.md`  | Prompts reutilizáveis para o time      |
 
 ---
