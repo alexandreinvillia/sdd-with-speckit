@@ -201,7 +201,7 @@ Sem autenticação e sem banco de dados. Mantenha compatibilidade com a constitu
 **O que fazer:**
 1. Abra `.specs/requirements.md`
 2. Revise os requisitos minimos ja definidos
-3. Detalhe criterios de aceite e edge cases
+3. Detalhe criterios de aceite e casos de borda
 4. Salve a versao refinada
 
 **Copilot Chat — Spec Kit:**
