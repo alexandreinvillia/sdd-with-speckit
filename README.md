@@ -46,8 +46,9 @@ specify init . --script sh
 specify integration install copilot
 ```
 
-Esse passo cria a pasta `.specify/` e instala os arquivos `.prompt.md` em `.github/copilot/`, habilitando os comandos slash do Spec Kit no Copilot Chat.
-Esse passo cria a pasta `.specify/` e configura o Copilot com arquivos em `.github/prompts/`, `.github/agents/` e `.github/copilot-instructions.md`, habilitando os comandos slash do Spec Kit no Copilot Chat.
+Esse passo cria a pasta `.specify/` e os arquivos de integração em `.github/prompts/`, `.github/agents/` e `.github/copilot-instructions.md`, habilitando os comandos slash do Spec Kit no Copilot Chat.
+
+> **Observação:** esses arquivos são locais do Codespace e não são versionados no repositório.
 
 **Observação:** neste momento você ainda não executa a API, porque o `app/main.py`
 será criado na Etapa 6.
@@ -73,22 +74,33 @@ Use estes comandos no Copilot Chat durante o hands-on (dentro do Codespace):
 
 ## Estrutura do Repositório
 
+**O que existe no repositório (baseline):**
 ```
-.specify/            ← Criado no Passo 0 pelo specify init
-.github/
-  copilot-instructions.md  ← Diretrizes gerais para o Copilot
-  prompts/           ← Prompts slash do Spec Kit
-  agents/            ← Agentes auxiliares do fluxo Spec Kit
+.devcontainer/       ← Setup automático do Codespace
 .specs/
-  constitution.md    ← Regras do projeto (Etapa 1)
   spec.yaml          ← Proposta do sistema (Etapa 2)
   requirements.md    ← Requisitos funcionais (Etapa 3)
   design.md          ← Design técnico (Etapa 4)
   tasks.md           ← Plano de implementação (Etapa 5)
 app/
-  main.py            ← Criado somente na Etapa 6
+  .gitkeep           ← main.py será criado na Etapa 6
 docs/
   copilot-prompts.md ← Prompts prontos para usar com Copilot
+```
+
+**O que é criado durante o hands-on (não versionado):**
+```
+.specify/            ← Criado no Passo 0 (specify init)
+.github/
+  copilot-instructions.md  ← Criado no Passo 0 (integration install)
+  prompts/           ← Criado no Passo 0 (integration install)
+  agents/            ← Criado no Passo 0 (integration install)
+.specs/
+  constitution.md    ← Criado na Etapa 1
+app/
+  main.py            ← Criado na Etapa 6
+tests/
+  test_api.py        ← Criado na Etapa 7
 ```
 
 > Os artefatos em `.specs/` são a "fonte da verdade" do sistema.
@@ -434,10 +446,7 @@ Ao concluir, você terá:
 
 | Artefato                   | Propósito                              |
 |----------------------------|----------------------------------------|
-| `.specify/`                | Configuração local do Spec Kit         |
-| `.github/prompts/`         | Prompts slash do Spec Kit no Copilot   |
-| `.github/agents/`          | Agentes auxiliares do fluxo Spec Kit   |
-| `.github/copilot-instructions.md` | Instruções gerais do Copilot    |
+
 | `.specs/constitution.md`   | Regras e convenções do projeto         |
 | `.specs/spec.yaml`         | Proposta e escopo do sistema           |
 | `.specs/requirements.md`   | O que o sistema deve fazer             |
