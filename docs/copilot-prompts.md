@@ -5,7 +5,26 @@
 
 ---
 
-## Etapa 1 — Proposta (spec.yaml)
+## Passo 0 — Inicialização do Spec Kit
+
+```bash
+specify init . --script sh
+specify integration install copilot
+```
+
+---
+
+## Etapa 1 — Constituição do Projeto
+
+```
+/speckit.constitution Defina as regras deste projeto:
+Python 3.11 + FastAPI, armazenamento em memória, sem autenticação, sem banco de dados,
+status HTTP corretos e código acessível para iniciantes.
+```
+
+---
+
+## Etapa 2 — Proposta (spec.yaml)
 
 ```
 @workspace Revise o baseline em #.specs/spec.yaml e proponha melhorias sem mudar o escopo principal
@@ -17,7 +36,7 @@ Based on #.specs/spec.yaml, refine the proposal text and keep the same core feat
 
 ---
 
-## Etapa 2 — Requisitos (requirements.md)
+## Etapa 3 — Requisitos (requirements.md)
 
 ```
 Based on #.specs/spec.yaml and #.specs/requirements.md, refine acceptance criteria and edge cases
@@ -30,7 +49,7 @@ Review #.specs/requirements.md and identify any missing edge cases or acceptance
 
 ---
 
-## Etapa 3 — Design Técnico (design.md)
+## Etapa 4 — Design Técnico (design.md)
 
 ```
 Based on #.specs/requirements.md and #.specs/design.md, refine the technical design.
@@ -43,7 +62,7 @@ Based on the design in #.specs/design.md, what are the Pydantic models I need to
 
 ---
 
-## Etapa 4 — Tasks (tasks.md)
+## Etapa 5 — Tasks (tasks.md)
 
 ```
 Based on #.specs/design.md and #.specs/tasks.md, refine task order and granularity.
@@ -56,7 +75,7 @@ I'm working on TASK-04 from #.specs/tasks.md. What exactly do I need to implemen
 
 ---
 
-## Etapa 5 — Implementação (app/main.py)
+## Etapa 6 — Implementação (app/main.py)
 
 ### Criar arquivo inicial
 ```
@@ -99,7 +118,7 @@ Return HTTP 204 with no body on success, HTTP 404 if not found.
 
 ---
 
-## Etapa 6 — Testes Manuais
+## Etapa 7 — Testes e Validação
 
 ```
 Generate curl commands to test all endpoints of a Task Manager FastAPI API running on localhost:8000:

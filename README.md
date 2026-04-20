@@ -11,7 +11,7 @@ Você irá construir uma **API de gestão de tarefas (To-Do)** usando:
 A ideia **não é codar muito** — é aprender o fluxo:
 
 ```
-Constituição → Proposta/Spec (refino) → Design → Plano → Tasks → Código (via Copilot)
+Setup Spec Kit → Constituição → Proposta/Spec (refino) → Design → Plano → Tasks → Código (via Copilot)
 ```
 
 ## Nota Importante Sobre a Abordagem
@@ -41,10 +41,13 @@ python --version
 specify --help
 ```
 
-**Se precisar inicializar o Spec Kit manualmente:**
+**Passo 0 — inicializar o projeto para usar Spec Kit com Copilot:**
 ```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init . --script sh
+specify init . --script sh
+specify integration install copilot
 ```
+
+Esse passo cria a pasta `.specify/` e instala os arquivos `.prompt.md` em `.github/copilot/`, habilitando os comandos slash do Spec Kit no Copilot Chat.
 
 **Observação:** neste momento você ainda não executa a API, porque o `app/main.py`
 será criado na Etapa 6.
@@ -56,6 +59,7 @@ dentro do próprio Codespace para manter o fluxo unificado para toda a turma.**
 
 Use estes comandos no Copilot Chat durante o hands-on (dentro do Codespace):
 
+0. Preparar projeto e integração Copilot: `specify init` + `specify integration install copilot`
 1. Definir regras do projeto: `/speckit.constitution`
 2. Refinar proposta existente: `/speckit.specify`
 3. Refinar ambiguidade: `/speckit.clarify`
@@ -70,7 +74,11 @@ Use estes comandos no Copilot Chat durante o hands-on (dentro do Codespace):
 ## Estrutura do Repositório
 
 ```
+.specify/            ← Criado no Passo 0 pelo specify init
+.github/
+  copilot/           ← Criado no Passo 0 pela integração com Copilot
 .specs/
+  constitution.md    ← Regras do projeto (Etapa 1)
   spec.yaml          ← Proposta do sistema (Etapa 2)
   requirements.md    ← Requisitos funcionais (Etapa 3)
   design.md          ← Design técnico (Etapa 4)
@@ -89,6 +97,8 @@ docs/
 Neste treinamento, os artefatos em `.specs/` ja trazem requisitos minimos para reduzir
 variacao entre alunos. O trabalho da turma e **refinar e detalhar** cada arquivo em sequencia.
 
+Antes disso, a turma executa o **Passo 0** para inicializar o Spec Kit no projeto e habilitar os comandos slash no Copilot Chat.
+
 Variacoes entre alunos sao esperadas, mas com convergencia nos pontos abaixo:
 - mesmo escopo funcional (CRUD simples de tarefas)
 - criterios de aceite equivalentes
@@ -102,11 +112,30 @@ O que pode variar sem problema:
 
 ---
 
+## Passo 0 — Inicializar Spec Kit e integração com Copilot
+
+**Objetivo:** preparar o projeto para usar os comandos slash do Spec Kit dentro do Copilot Chat.
+
+**O que fazer:**
+1. Execute `specify init . --script sh` no terminal do Codespace
+2. Execute `specify integration install copilot`
+3. Confirme que as pastas `.specify/` e `.github/copilot/` foram criadas
+
+**Terminal:**
+```bash
+specify init . --script sh
+specify integration install copilot
+```
+
+**Resultado esperado:** projeto inicializado para Spec Kit, com integração do Copilot pronta para os comandos `/speckit.*`.
+
+> **Conexão com o mundo real:** esse é o bootstrap do projeto. Antes de discutir regras, specs ou código, o ambiente precisa estar preparado para que o fluxo SDD funcione de ponta a ponta.
+
+---
+
 ## Etapa 1 — Definir a Constituição do Projeto (`/speckit.constitution`)
 
 **Objetivo:** Estabelecer as regras do projeto antes de refinar qualquer artefato — stack, limites técnicos, critérios de qualidade e princípios de implementação.
-
-> **Importante:** a constituição não altera os arquivos em `.specs/`. Ela cria o arquivo `.github/copilot-instructions.md`, que define como o Copilot vai se comportar em todo o projeto. São artefatos distintos e complementares.
 
 **O que fazer:**
 1. Execute `/speckit.constitution` no Copilot Chat
@@ -120,7 +149,7 @@ Python 3.11 + FastAPI, armazenamento em memória, sem autenticação, sem banco 
 status HTTP corretos e código acessível para iniciantes.
 ```
 
-**Resultado esperado:** arquivo `.github/copilot-instructions.md` criado com as diretrizes do projeto. A partir daqui, o Copilot segue essas regras automaticamente.
+**Resultado esperado:** arquivo `.specs/constitution.md` criado com as diretrizes do projeto. A partir daqui, o Copilot referencia essas regras automaticamente nos próximos comandos Spec Kit.
 
 > **Conexão com o mundo real:** em times reais, as convenções do projeto ficam documentadas para que todos os desenvolvedores — e o Copilot — tomem decisões consistentes desde o início.
 
@@ -403,6 +432,9 @@ Ao concluir, você terá:
 
 | Artefato                   | Propósito                              |
 |----------------------------|----------------------------------------|
+| `.specify/`                | Configuração local do Spec Kit         |
+| `.github/copilot/`         | Comandos slash e prompts do Copilot    |
+| `.specs/constitution.md`   | Regras e convenções do projeto         |
 | `.specs/spec.yaml`         | Proposta e escopo do sistema           |
 | `.specs/requirements.md`   | O que o sistema deve fazer             |
 | `.specs/design.md`         | Como o sistema será construído         |
