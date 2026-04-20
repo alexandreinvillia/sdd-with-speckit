@@ -17,8 +17,17 @@ specify integration install copilot
 ## Etapa 1 — Constituição do Projeto
 
 ```
-/speckit.constitution Defina as regras deste projeto:
-Python 3.11 + FastAPI, armazenamento em memória, sem autenticação, sem banco de dados,
+@workspace Compare #.specs/tasks.md com #app/main.py e diga quais tasks ainda não foram implementadas
+```
+
+```
+@workspace A implementação atual em #app/main.py corresponde ao design definido em #.specs/design.md?
+Liste quaisquer divergências.
+```
+
+```
+@workspace Com base em todos os arquivos de spec em .specs/, qual seria a próxima funcionalidade a adicionar nesta API?
+```
 status HTTP corretos e código acessível para iniciantes.
 ```
 
@@ -31,7 +40,7 @@ status HTTP corretos e código acessível para iniciantes.
 ```
 
 ```
-Based on #.specs/spec.yaml, refine the proposal text and keep the same core features (health + task CRUD)
+Com base em #.specs/spec.yaml, refine o texto da proposta mantendo as mesmas funcionalidades centrais (health + CRUD de tarefas)
 ```
 
 ---
@@ -39,12 +48,12 @@ Based on #.specs/spec.yaml, refine the proposal text and keep the same core feat
 ## Etapa 3 — Requisitos (requirements.md)
 
 ```
-Based on #.specs/spec.yaml and #.specs/requirements.md, refine acceptance criteria and edge cases
-without changing the main scope.
+Com base em #.specs/spec.yaml e #.specs/requirements.md, refine critérios de aceite e casos de borda
+sem alterar o escopo principal.
 ```
 
 ```
-Review #.specs/requirements.md and identify any missing edge cases or acceptance criteria
+Revise #.specs/requirements.md e identifique casos de borda ou critérios de aceite que estejam faltando
 ```
 
 ---
@@ -52,12 +61,12 @@ Review #.specs/requirements.md and identify any missing edge cases or acceptance
 ## Etapa 4 — Design Técnico (design.md)
 
 ```
-Based on #.specs/requirements.md and #.specs/design.md, refine the technical design.
-Keep endpoints and HTTP status contract stable.
+Com base em #.specs/requirements.md e #.specs/design.md, refine o design técnico.
+Mantenha estáveis os endpoints e o contrato de status HTTP.
 ```
 
 ```
-Based on the design in #.specs/design.md, what are the Pydantic models I need to create?
+Com base no design em #.specs/design.md, quais modelos Pydantic preciso criar?
 ```
 
 ---
@@ -65,12 +74,12 @@ Based on the design in #.specs/design.md, what are the Pydantic models I need to
 ## Etapa 5 — Tasks (tasks.md)
 
 ```
-Based on #.specs/design.md and #.specs/tasks.md, refine task order and granularity.
-Each task should remain under 5 minutes.
+Com base em #.specs/design.md e #.specs/tasks.md, refine a ordem e a granularidade das tasks.
+Cada task deve permanecer com duração estimada abaixo de 5 minutos.
 ```
 
 ```
-I'm working on TASK-04 from #.specs/tasks.md. What exactly do I need to implement?
+Estou trabalhando na TASK-04 em #.specs/tasks.md. O que exatamente eu preciso implementar?
 ```
 
 ---
@@ -79,41 +88,41 @@ I'm working on TASK-04 from #.specs/tasks.md. What exactly do I need to implemen
 
 ### Criar arquivo inicial
 ```
-Create app/main.py with a FastAPI app and a GET / health check endpoint that returns {"status": "ok"}
+Crie app/main.py com uma aplicação FastAPI e um endpoint GET / de health check que retorne {"status": "ok"}
 ```
 
 ### Modelos Pydantic
 ```
-Based on #.specs/design.md, create Pydantic models for Task, TaskCreate and TaskUpdate in Python
+Com base em #.specs/design.md, crie os modelos Pydantic Task, TaskCreate e TaskUpdate em Python
 ```
 
 ### POST /tasks
 ```
-Implement POST /tasks endpoint using FastAPI. It should:
-- receive a TaskCreate body (title, optional description)
-- generate a UUID id
-- set status to "pending"
-- set created_at to datetime.now()
-- save to tasks_db list
-- return the task with HTTP 201
+Implemente o endpoint POST /tasks usando FastAPI. Ele deve:
+- receber um body TaskCreate (title, description opcional)
+- gerar um id UUID
+- definir status como "pending"
+- definir created_at com datetime.now()
+- salvar na lista tasks_db
+- retornar a tarefa com HTTP 201
 ```
 
 ### GET /tasks
 ```
-Implement GET /tasks endpoint that returns all tasks from tasks_db as a list
+Implemente o endpoint GET /tasks retornando todas as tarefas de tasks_db em formato de lista
 ```
 
 ### PATCH /tasks/{id}
 ```
-Implement PATCH /tasks/{id} using FastAPI. Find task by id in tasks_db,
-update its status field using TaskUpdate model.
-Return HTTP 200 with updated task or HTTP 404 if not found.
+Implemente PATCH /tasks/{id} usando FastAPI. Encontre a tarefa por id em tasks_db,
+atualize o campo status usando o modelo TaskUpdate.
+Retorne HTTP 200 com a tarefa atualizada ou HTTP 404 se não encontrar.
 ```
 
 ### DELETE /tasks/{id}
 ```
-Implement DELETE /tasks/{id} using FastAPI. Find and remove task by id from tasks_db.
-Return HTTP 204 with no body on success, HTTP 404 if not found.
+Implemente DELETE /tasks/{id} usando FastAPI. Encontre e remova a tarefa por id de tasks_db.
+Retorne HTTP 204 sem body em caso de sucesso, e HTTP 404 se não encontrar.
 ```
 
 ---
@@ -121,7 +130,7 @@ Return HTTP 204 with no body on success, HTTP 404 if not found.
 ## Etapa 7 — Testes e Validação
 
 ```
-Generate curl commands to test all endpoints of a Task Manager FastAPI API running on localhost:8000:
+Gere comandos curl para testar todos os endpoints de uma API FastAPI de Task Manager rodando em localhost:8000:
 - POST /tasks
 - GET /tasks
 - PATCH /tasks/{id}
@@ -129,8 +138,8 @@ Generate curl commands to test all endpoints of a Task Manager FastAPI API runni
 ```
 
 ```
-Review #app/main.py against the acceptance criteria in #.specs/requirements.md
-and tell me if any requirement is missing or incorrectly implemented
+Revise #app/main.py com base nos critérios de aceite em #.specs/requirements.md
+e me diga se algum requisito está faltando ou foi implementado incorretamente
 ```
 
 ---
@@ -138,14 +147,14 @@ and tell me if any requirement is missing or incorrectly implemented
 ## Prompts de Revisão Cross-Artefato
 
 ```
-@workspace Compare #.specs/tasks.md with #app/main.py and tell me which tasks are still not implemented
+@workspace Compare #.specs/tasks.md com #app/main.py e diga quais tasks ainda não foram implementadas
 ```
 
 ```
-@workspace Does the current implementation in #app/main.py match the design defined in #.specs/design.md?
-List any discrepancies.
+@workspace A implementação atual em #app/main.py corresponde ao design definido em #.specs/design.md?
+Liste quaisquer divergências.
 ```
 
 ```
-@workspace Based on all spec files in .specs/, what would be the next feature to add to this API?
+@workspace Com base em todos os arquivos de spec em .specs/, qual seria a próxima funcionalidade a adicionar nesta API?
 ```
