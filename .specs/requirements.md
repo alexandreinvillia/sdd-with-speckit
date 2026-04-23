@@ -1,6 +1,6 @@
 # Requirements (baseline minimo)
 
-Refinar na Etapa 2 com base em .specs/spec.yaml usando /speckit.clarify e /speckit.checklist.
+Refinar na Etapa 1 com base em .specs/spec.yaml usando /speckit.clarify (opcional: /speckit.checklist).
 
 ## Visao Geral
 

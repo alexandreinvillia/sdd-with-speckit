@@ -1,6 +1,6 @@
 # Tasks (baseline minimo)
 
-Refinar na Etapa 4 com base em .specs/design.md usando /speckit.tasks e /speckit.analyze.
+Refinar na Etapa 2 com base em .specs/design.md usando /speckit.tasks.
 
 ## Convencao de Status
 

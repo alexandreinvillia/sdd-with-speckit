@@ -1,34 +1,55 @@
 # Hands-on: Spec-Driven Development com GitHub Copilot + Spec Kit
 
-## Por que SDD em 40 minutos?
+## O que é Spec-Driven Development (SDD)?
 
-### Cenário A — Sem especificação (caos)
-- Você pede ao Copilot: "Crie uma API de tarefas"
-- Cada pessoa na turma gera código diferente
-- Um usa Pydantic models, outro usa dicts
-- Um retorna 404, outro retorna 400 em erro
-- **Resultado:** inconsistência, retrabalho, frustração
+**SDD é uma abordagem que coloca especificação clara no centro do desenvolvimento.** Em vez de começar com código ou requisitos vagos, você:
 
-### Cenário B — Com especificação (harmonia)
-- Você compartilha `.specs/requirements.md`, `.specs/design.md`, `.specs/tasks.md`
-- Cada pessoa pede ao Copilot: "Implemente a TASK-02 usando #.specs/design.md"
-- Copilot gera código quase idêntico entre todos
-- Endpoints, status HTTP, modelos — tudo alinhado
-- **Resultado:** consistência, velocidade, confiança
-
-**A diferença? A especificação guia tanto os humanos quanto a IA.**
+1. Define **claramente o que** o sistema deve fazer (especificação)
+2. Quebra **como** será implementado (design técnico)
+3. Organiza **em que ordem** (tarefas ordenadas)
+4. Gera código **guiado por esses artefatos** (implementação consistente)
 
 ---
 
-## Fluxo SDD (resumido)
+## Por que SDD + GitHub Copilot?
+
+### Benefício 1: Redução de Ambiguidade
+- **Sem spec:** Copilot adivinha — endpoints inconsistentes, status HTTP diferentes, nomes de campos variáveis
+- **Com spec:** Copilot tem contexto — código consistente, alinhado com decisões técnicas já validadas
+
+### Benefício 2: Velocidade e Qualidade
+- **Requisitos claros reduzem retrabalho:** cada desenvolvedor (humano ou IA) entende exatamente o que fazer
+- **Código gerado é verificável:** código não só funciona, como atende à spec de forma rastreável
+
+### Benefício 3: Colaboração em Escala
+- **Time inteiro fala a mesma linguagem:** especificação é o contrato entre produto, design e engenharia
+- **IA aprende as regras do projeto:** Copilot respeita convenções, arquitetura e padrões documentados
+
+---
+
+## O Fluxo SDD
 
 ```
-SPEC → REQUISITOS → DESIGN → TASKS → CÓDIGO (guiado)
- ↓        ↓           ↓        ↓         ↓
- O que?  Como validar? Arquitetura?  Em que ordem?  IA implementa aqui
+ESPECIFICAÇÃO → REQUISITOS → DESIGN → TASKS → CÓDIGO (guiado)
+     ↓              ↓           ↓       ↓          ↓
+   O que      Validar       Arquitetura   Ordem   IA segue
+   mudar?      critérios?    técnica?     lógica?  cada step
 ```
 
-Cada etapa reduz ambiguidade para a próxima. **Sem spec, o Copilot adivinha.**
+**Cada etapa reduz ambiguidade:** você não avança até que a etapa anterior esteja clara.
+
+---
+
+## Neste Hands-on
+
+Você vai:
+1. Começar com **spec refinada** (não criar do zero)
+2. **Refinar requisitos** com Copilot (descobrir gaps)
+3. **Quebrar em tasks** (ordem clara de execução)
+4. **Gerar código** guiado pela spec (ver Copilot ser preciso)
+5. **Validar** que código atende spec (ciclo fechado)
+
+**O resultado:** uma API pronta, código consistente entre todos, e prova viva de que especificação guia IA.
 
 ---
 

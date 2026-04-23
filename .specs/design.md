@@ -1,6 +1,6 @@
 # Design Tecnico (baseline minimo)
 
-Refinar na Etapa 3 com base em .specs/requirements.md usando /speckit.plan.
+Usar como base entre as Etapas 2 e 3: validar tasks em .specs/tasks.md e implementar com /speckit.implement.
 
 ## Arquitetura
 
@@ -8,7 +8,7 @@ Aplicacao FastAPI monolitica simples com armazenamento em memoria.
 
 ## Estrutura de Arquivos
 
-- app/main.py (criado na Etapa 5)
+- app/main.py (criado na Etapa 3)
 - .specs/spec.yaml
 - .specs/requirements.md
 - .specs/design.md
