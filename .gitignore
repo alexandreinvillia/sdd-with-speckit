@@ -1,8 +1,5 @@
 __pycache__/
 .specify/
-.github/agents/
-.github/prompts/
-.github/copilot-instructions.md
 .env
 .venv/
 venv/
