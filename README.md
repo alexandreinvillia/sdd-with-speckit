@@ -206,7 +206,7 @@ Sem autenticação e sem banco de dados. Mantenha compatibilidade com a constitu
 
 **Copilot Chat — Spec Kit:**
 ```
-/speckit.clarify Focus on acceptance criteria, error responses and edge cases.
+/speckit.clarify Foque em critérios de aceite, respostas de erro e casos de borda.
 ```
 ```
 /speckit.checklist
@@ -230,8 +230,8 @@ Sem autenticação e sem banco de dados. Mantenha compatibilidade com a constitu
 
 **Copilot Chat — Spec Kit:**
 ```
-/speckit.plan Use Python 3.11 with FastAPI. Keep implementation simple and in-memory.
-Define endpoints and data models from the approved requirements.
+/speckit.plan Utilize Python 3.11 com FastAPI. Mantenha a implementação simples e em memória.
+Defina endpoints e modelos de dados a partir dos requisitos aprovados.
 ```
 
 **Resultado esperado:** `design.md` refinado ao vivo, descrevendo exatamente como implementar.
@@ -286,8 +286,8 @@ Siga a ordem das tasks em `.specs/tasks.md`. Para cada task:
 
 **Prompt:**
 ```
-Create app/main.py with a FastAPI app and a GET / health check endpoint
-that returns {"status": "ok"}
+Crie app/main.py com uma aplicação FastAPI e um endpoint GET / de health check
+que retorne {"status": "ok"}
 ```
 
 **Depois da TASK-01, rode a API:**
@@ -303,7 +303,7 @@ Acesse o Swagger UI em: `http://localhost:8000/docs`
 
 **Prompt:**
 ```
-Based on .specs/design.md, create Pydantic models for Task, TaskCreate and TaskUpdate in app/main.py
+Com base em .specs/design.md, crie os modelos Pydantic Task, TaskCreate e TaskUpdate em app/main.py
 ```
 
 **Resultado esperado:**
@@ -333,7 +333,7 @@ class Task(BaseModel):
 
 **Prompt:**
 ```
-Add an in-memory storage list called tasks_db to store task dictionaries in app/main.py
+Adicione uma lista de armazenamento em memória chamada tasks_db para guardar dicionários de tarefas em app/main.py
 ```
 
 ---
@@ -342,11 +342,11 @@ Add an in-memory storage list called tasks_db to store task dictionaries in app/
 
 **Prompt:**
 ```
-Implement POST /tasks endpoint in app/main.py. It should:
-- receive a TaskCreate body
-- generate a UUID id
-- set status to "pending" and created_at to now
-- save to tasks_db and return the task with HTTP 201
+Implemente o endpoint POST /tasks em app/main.py. Ele deve:
+- receber um body TaskCreate
+- gerar um id UUID
+- definir status como "pending" e created_at com o horário atual
+- salvar em tasks_db e retornar a tarefa com HTTP 201
 ```
 
 **Teste rápido com curl:**
@@ -362,7 +362,7 @@ curl -X POST http://localhost:8000/tasks \
 
 **Prompt:**
 ```
-Implement GET /tasks endpoint in app/main.py that returns all tasks from tasks_db
+Implemente o endpoint GET /tasks em app/main.py retornando todas as tarefas de tasks_db
 ```
 
 **Teste:**
@@ -376,8 +376,8 @@ curl http://localhost:8000/tasks
 
 **Prompt:**
 ```
-Implement PATCH /tasks/{id} in app/main.py. Find task by id in tasks_db,
-update its status with TaskUpdate. Return 200 or 404.
+Implemente PATCH /tasks/{id} em app/main.py. Encontre a tarefa por id em tasks_db,
+atualize seu status com TaskUpdate. Retorne 200 ou 404.
 ```
 
 **Teste:**
@@ -393,8 +393,8 @@ curl -X PATCH http://localhost:8000/tasks/{ID} \
 
 **Prompt:**
 ```
-Implement DELETE /tasks/{id} in app/main.py. Remove task by id from tasks_db.
-Return 204 on success, 404 if not found.
+Implemente DELETE /tasks/{id} em app/main.py. Remova a tarefa por id de tasks_db.
+Retorne 204 em caso de sucesso e 404 se não encontrar.
 ```
 
 ---
