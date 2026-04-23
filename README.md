@@ -1,139 +1,50 @@
 # Hands-on: Spec-Driven Development com GitHub Copilot + Spec Kit
 
-## Cenário
+## Por que SDD em 40 minutos?
 
-Você irá construir uma **API de gestão de tarefas (To-Do)** usando:
+### Cenário A — Sem especificação (caos)
+- Você pede ao Copilot: "Crie uma API de tarefas"
+- Cada pessoa na turma gera código diferente
+- Um usa Pydantic models, outro usa dicts
+- Um retorna 404, outro retorna 400 em erro
+- **Resultado:** inconsistência, retrabalho, frustração
 
-- **GitHub Copilot** (Chat + sugestões inline)
-- **Spec Kit** (fluxo SDD estruturado)
+### Cenário B — Com especificação (harmonia)
+- Você compartilha `.specs/requirements.md`, `.specs/design.md`, `.specs/tasks.md`
+- Cada pessoa pede ao Copilot: "Implemente a TASK-02 usando #.specs/design.md"
+- Copilot gera código quase idêntico entre todos
+- Endpoints, status HTTP, modelos — tudo alinhado
+- **Resultado:** consistência, velocidade, confiança
 
-A ideia **não é codar muito** — é aprender o fluxo:
-
-```
-Setup Spec Kit → Constituição → Proposta/Spec (refino) → Design → Plano → Tasks → Código (via Copilot)
-```
-
-## Nota Importante Sobre a Abordagem
-
-Este treinamento usa **SDD em modo hibrido**:
-
-- O repositorio traz um baseline minimo em `.specs/` (ponto de partida comum)
-- A turma refina esse baseline com Spec Kit + Copilot durante o hands-on
-- O codigo nasce apenas na Etapa 6, guiado pelos artefatos refinados
-
-> Em times reais, esse fluxo reduz ambiguidade, alinha expectativas antes de escrever
-> uma linha de código e torna o Copilot muito mais preciso — porque ele recebe contexto,
-> não só um pedido vago.
+**A diferença? A especificação guia tanto os humanos quanto a IA.**
 
 ---
 
-## Setup (1 minuto)
+## Fluxo SDD (resumido)
 
-**GitHub Codespaces:**
-1. Clique em **Code → Codespaces → Create Codespace**
-2. Aguarde o ambiente subir
-3. Abra o terminal integrado
-
-**Validar ferramentas no Codespace:**
-```bash
-python --version
-specify --help
+```
+SPEC → REQUISITOS → DESIGN → TASKS → CÓDIGO (guiado)
+ ↓        ↓           ↓        ↓         ↓
+ O que?  Como validar? Arquitetura?  Em que ordem?  IA implementa aqui
 ```
 
-**Passo 0 — inicializar o projeto para usar Spec Kit com Copilot:**
-```bash
-specify init . --script sh
-specify integration install copilot
-```
-
-Esse passo cria a pasta `.specify/` e os arquivos de integração em `.github/prompts/`, `.github/agents/` e `.github/copilot-instructions.md`, habilitando os comandos slash do Spec Kit no Copilot Chat.
-
-> **Observação:** esses arquivos são locais do Codespace e não são versionados no repositório.
-
-**Observação:** neste momento você ainda não executa a API, porque o `app/main.py`
-será criado na Etapa 6.
-
-**Neste hands-on, vamos conduzir todas as etapas (spec, requisitos, design, tasks, testes e código)
-dentro do próprio Codespace para manter o fluxo unificado para toda a turma.**
-
-## Comandos do Spec Kit no Fluxo
-
-Use estes comandos no Copilot Chat durante o hands-on (dentro do Codespace):
-
-0. Preparar projeto e integração Copilot: `specify init` + `specify integration install copilot`
-1. Definir regras do projeto: `/speckit.constitution`
-2. Refinar proposta existente: `/speckit.specify`
-3. Refinar ambiguidade: `/speckit.clarify`
-4. Validar checklist da spec: `/speckit.checklist`
-5. Gerar plano tecnico: `/speckit.plan`
-6. Gerar tarefas: `/speckit.tasks`
-7. Analisar plano/risco: `/speckit.analyze`
-8. Implementar tarefas: `/speckit.implement`
+Cada etapa reduz ambiguidade para a próxima. **Sem spec, o Copilot adivinha.**
 
 ---
 
-## Estrutura do Repositório
+## Agenda do Hands-on (40 minutos)
 
-**O que existe no repositório (baseline):**
-```
-.devcontainer/       ← Setup automático do Codespace
-.specs/
-  spec.yaml          ← Proposta do sistema (Etapa 2)
-  requirements.md    ← Requisitos funcionais (Etapa 3)
-  design.md          ← Design técnico (Etapa 4)
-  tasks.md           ← Plano de implementação (Etapa 5)
-app/
-  .gitkeep           ← main.py será criado na Etapa 6
-docs/
-  copilot-prompts.md ← Prompts prontos para usar com Copilot
-```
-
-**O que é criado durante o hands-on (não versionado):**
-```
-.specify/            ← Criado no Passo 0 (specify init)
-.github/
-  copilot-instructions.md  ← Criado no Passo 0 (integration install)
-  prompts/           ← Criado no Passo 0 (integration install)
-  agents/            ← Criado no Passo 0 (integration install)
-.specs/
-  constitution.md    ← Criado na Etapa 1
-app/
-  main.py            ← Criado na Etapa 6
-tests/
-  test_api.py        ← Criado na Etapa 7
-```
-
-> Os artefatos em `.specs/` são a "fonte da verdade" do sistema.
-> O Copilot usa esses arquivos como contexto para gerar código mais preciso.
-
-## Dinamica do Hands-on (baseline + refinamento)
-
-Neste treinamento, os artefatos em `.specs/` ja trazem requisitos minimos para reduzir
-variacao entre alunos. O trabalho da turma e **refinar e detalhar** cada arquivo em sequencia.
-
-Antes disso, a turma executa o **Passo 0** para inicializar o Spec Kit no projeto e habilitar os comandos slash no Copilot Chat.
-
-Variacoes entre alunos sao esperadas, mas com convergencia nos pontos abaixo:
-- mesmo escopo funcional (CRUD simples de tarefas)
-- criterios de aceite equivalentes
-- endpoints e status HTTP compatveis
-- tarefas pequenas e em ordem de implementacao
-
-O que pode variar sem problema:
-- escrita dos textos
-- nomes internos de secoes/tarefas
-- detalhes de mensagens e exemplos
+| Etapa | Comando Spec Kit | Tempo | O que acontece |
+|-------|------------------|-------|-----------|
+| **Setup** | `specify init` + integração | 2 min | Ambiente pronto para Spec Kit |
+| **Refinamento** | `/speckit.clarify` | 8 min | Identificar gaps nos requisitos |
+| **Tarefas** | `/speckit.tasks` | 5 min | Quebra incrementada e priorizada |
+| **Implementação** | `/speckit.implement` | 18 min | Copilot gera código guiado pela spec |
+| **Reflexão** | — | 7 min | Validação e fechamento |
 
 ---
 
-## Passo 0 — Inicializar Spec Kit e integração com Copilot
-
-**Objetivo:** preparar o projeto para usar os comandos slash do Spec Kit dentro do Copilot Chat.
-
-**O que fazer:**
-1. Execute `specify init . --script sh` no terminal do Codespace
-2. Execute `specify integration install copilot`
-3. Confirme que `.specify/`, `.github/prompts/`, `.github/agents/` e `.github/copilot-instructions.md` foram criados
+## Passo 0 — Setup (2 minutos)
 
 **Terminal:**
 ```bash
@@ -141,325 +52,137 @@ specify init . --script sh
 specify integration install copilot
 ```
 
-**Resultado esperado:** projeto inicializado para Spec Kit, com integração do Copilot pronta para os comandos `/speckit.*`.
-
-> **Conexão com o mundo real:** esse é o bootstrap do projeto. Antes de discutir regras, specs ou código, o ambiente precisa estar preparado para que o fluxo SDD funcione de ponta a ponta.
+Isso cria `.specify/`, `.github/prompts/` e ativa os comandos `/speckit.*` no Copilot Chat.
 
 ---
 
-## Etapa 1 — Definir a Constituição do Projeto (`/speckit.constitution`)
+## Etapa 1 — Refinar Requisitos (8 minutos)
 
-**Objetivo:** Estabelecer as regras do projeto antes de refinar qualquer artefato — stack, limites técnicos, critérios de qualidade e princípios de implementação.
-
-**O que fazer:**
-1. Execute `/speckit.constitution` no Copilot Chat
-2. Defina as regras do hands-on (Python 3.11 + FastAPI, sem autenticação, sem banco, código didático)
-3. Revise com a turma — esse arquivo guiará o Copilot nas próximas etapas
-
-**Copilot Chat — Spec Kit:**
+**No Copilot Chat:**
 ```
-/speckit.constitution Defina as regras deste projeto:
-Python 3.11 + FastAPI, armazenamento em memória, sem autenticação, sem banco de dados,
-status HTTP corretos e código acessível para iniciantes.
+/speckit.clarify Identifique critérios de aceite faltando em #.specs/requirements.md
+e casos de borda para endpoints de tarefas.
 ```
 
-**Resultado esperado:** arquivo `.specs/constitution.md` criado com as diretrizes do projeto. A partir daqui, o Copilot referencia essas regras automaticamente nos próximos comandos Spec Kit.
+**O que observar:**
+- Copilot lê `.specs/spec.yaml` e `.specs/requirements.md` automaticamente
+- Aponta gaps que você e a turma talvez tivessem deixado passar
+- Você refina o arquivo, Copilot lê a versão nova — **feedback loop rápido**
 
-> **Conexão com o mundo real:** em times reais, as convenções do projeto ficam documentadas para que todos os desenvolvedores — e o Copilot — tomem decisões consistentes desde o início.
+**Checkpoint:** `.specs/requirements.md` com critérios claros e sem ambiguidade.
 
 ---
 
-## Etapa 2 — Refinar a Proposta (`spec.yaml`)
+## Etapa 2 — Validar Tarefas (5 minutos)
 
-**Objetivo:** Refinar o baseline de proposta já existente, em vez de criar do zero.
-
-**O que fazer:**
-1. Abra `.specs/spec.yaml`
-2. Revise o baseline minimo ja definido
-3. Use `/speckit.specify` para refinar descricao, contexto, escopo e fora de escopo
-4. Ajuste `author` e `updated_at`
-5. Valide se o texto continua alinhado à constituição definida na Etapa 1
-
-**Copilot Chat — Spec Kit:**
+**No Copilot Chat:**
 ```
-/speckit.specify Refine o baseline em .specs/spec.yaml para uma API de tarefas pessoais.
-Usuários podem criar, listar, atualizar status e remover tarefas.
-Sem autenticação e sem banco de dados. Mantenha compatibilidade com a constituição do projeto.
+/speckit.tasks Com base em #.specs/design.md, quebre em tasks pequenas (< 5 min cada).
+Cada task deve ter: descrição clara, critério de aceite e prompt sugerido.
 ```
 
-**Resultado esperado:** `spec.yaml` refinado, mantendo o baseline comum e alinhando escopo com o grupo.
+**O que observar:**
+- Task-01: Setup (criar `app/main.py` + health check)
+- Task-02: Modelos Pydantic
+- Task-03–06: Endpoints (POST, GET, PATCH, DELETE /tasks)
+- Task-07: Testes
 
-> **Conexão com o mundo real:** Times de produto e engenharia usam propostas como essa
-> para alinhar expectativas antes do sprint. O `spec.yaml` é o contrato inicial.
+**Checkpoint:** `.specs/tasks.md` pronto, ordem clara e priorizada.
 
 ---
 
-## Etapa 3 — Refinar Requisitos (`requirements.md`)
+## Etapa 3 — Implementar com Spec Kit (18 minutos)
 
-**Objetivo:** Transformar a proposta em requisitos concretos com critérios de aceite.
-
-**O que fazer:**
-1. Abra `.specs/requirements.md`
-2. Revise os requisitos minimos ja definidos
-3. Detalhe criterios de aceite e casos de borda
-4. Salve a versao refinada
-
-**Copilot Chat — Spec Kit:**
+**No Copilot Chat, para cada task:**
 ```
-/speckit.clarify Foque em critérios de aceite, respostas de erro e casos de borda.
-```
-```
-/speckit.checklist
+/speckit.implement Implemente a TASK-01 em #.specs/tasks.md usando FastAPI.
 ```
 
-**Resultado esperado:** `requirements.md` refinado ao vivo, com RF e criterios de aceite claros.
+**O que observar:**
+- Copilot usa o contexto de `.specs/design.md` — não precisa você explicar tudo
+- O código é consistente com a especificação
+- Cada task leva ~3–4 min com ajustes
+- Você roda para validar: `uvicorn app.main:app --reload`
 
-> **Conexão com o mundo real:** Requisitos mal definidos são a principal causa de retrabalho.
-> O Copilot consegue identificar lacunas que passariam despercebidas em uma revisão humana rápida.
+**Checkpoint:** `app/main.py` funcional com endpoints da spec.
 
 ---
 
-## Etapa 4 — Criar o Design Técnico (`design.md`)
+## Etapa 4 — Reflexão Final (7 minutos)
 
-**Objetivo:** Decidir como o sistema será construído (endpoints, modelos, estratégia de dados).
+**Pergunta chave para a turma:**
 
-**O que fazer:**
-1. Abra `.specs/design.md`
-2. Revise o design tecnico base
-3. Refine endpoints, modelos e tratamento de erro com o grupo
+> Se eu tivesse pedido ao Copilot "Crie uma API de tarefas" **sem especificação**,
+> qual seria a diferença?
 
-**Copilot Chat — Spec Kit:**
-```
-/speckit.plan Utilize Python 3.11 com FastAPI. Mantenha a implementação simples e em memória.
-Defina endpoints e modelos de dados a partir dos requisitos aprovados.
-```
+**Respostas esperadas:**
+- "Ficaria inconsistente entre as pessoas"
+- "Copilot teria que adivinhar os status HTTP, os nomes dos campos..."
+- "Sem spec, cada um faz de um jeito"
 
-**Resultado esperado:** `design.md` refinado ao vivo, descrevendo exatamente como implementar.
+**Ponto central:**
+> **SDD não é criar mais documentação. É usar documentação como arma para reduzir ambiguidade — tanto para o time quanto para a IA.**
 
-> **Conexão com o mundo real:** O design técnico evita que cada desenvolvedor do time
-> tome decisões diferentes. O Copilot gera código mais consistente quando recebe um design claro.
-
----
-
-## Etapa 5 — Gerar o Plano de Tasks (`tasks.md`)
-
-**Objetivo:** Quebrar o design em tarefas pequenas e executáveis.
-
-**O que fazer:**
-1. Abra `.specs/tasks.md`
-2. Revise a lista base de tasks
-3. Refine ordem, granularidade e criterios de pronto
-
-**Copilot Chat — Spec Kit:**
-```
-/speckit.tasks
-```
-```
-/speckit.analyze
-```
-
-**Resultado esperado:** `tasks.md` refinado durante a sessao, pronto para guiar implementacao incremental.
-
-> **Conexão com o mundo real:** Tasks bem escritas aceleram o code review e facilitam
-> o pair programming com o Copilot — você sabe exatamente o que pedir.
+### Lições-chave
+1. **Spec = Contrato:** todos falam a mesma linguagem
+2. **IA mais precisa:** Copilot tem contexto, não adivinha
+3. **Consistência:** código gerado é alinhado ao design
+4. **Velocidade:** menos revisão, mais entrega
 
 ---
 
-## Etapa 6 — Implementar com Copilot (criar `app/main.py`)
+## Estrutura de Baseline
 
-**Objetivo:** Usar os artefatos de spec como contexto para o Copilot gerar código preciso.
-
-Siga a ordem das tasks em `.specs/tasks.md`. Para cada task:
-1. Crie `app/main.py` na TASK-01
-2. Use o prompt da task no Copilot Chat
-3. Aceite ou ajuste a sugestão
-4. Marque a task como `[x]` no `tasks.md`
-
-**Copilot Chat — Spec Kit:**
+**O que já vem preenchido no repositório:**
 ```
-/speckit.implement
+.specs/
+  spec.yaml          ← Proposta do sistema
+  requirements.md    ← Requisitos funcionais + critérios de aceite
+  design.md          ← Design técnico (endpoints, modelos)
+  tasks.md           ← Plano de execução (será refinado)
+app/
+  .gitkeep           ← main.py será criado na Etapa 3
+docs/
+  copilot-prompts.md ← Prompts de referência para instrutor
+```
+
+**O que será criado durante o hands-on:**
+```
+.specify/            ← Criado no Passo 0 (specify init)
+.github/
+  copilot-instructions.md  ← Integração Copilot
+  prompts/           ← Comandos `/speckit.*`
+app/
+  main.py            ← API criada na Etapa 3
 ```
 
 ---
 
-### TASK-01 — Criar `app/main.py` + Health Check
-
-**Prompt:**
-```
-Crie app/main.py com uma aplicação FastAPI e um endpoint GET / de health check
-que retorne {"status": "ok"}
-```
-
-**Depois da TASK-01, rode a API:**
-```bash
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-Acesse o Swagger UI em: `http://localhost:8000/docs`
-
----
-
-### TASK-02 — Modelos Pydantic
-
-**Prompt:**
-```
-Com base em .specs/design.md, crie os modelos Pydantic Task, TaskCreate e TaskUpdate em app/main.py
-```
-
-**Resultado esperado:**
-```python
-from pydantic import BaseModel
-from typing import Literal
-from datetime import datetime
-
-class TaskCreate(BaseModel):
-    title: str
-    description: str | None = None
-
-class TaskUpdate(BaseModel):
-    status: Literal["pending", "in_progress", "done"]
-
-class Task(BaseModel):
-    id: str
-    title: str
-    description: str | None
-    status: str
-    created_at: datetime
-```
-
----
-
-### TASK-03 — Storage em memória
-
-**Prompt:**
-```
-Adicione uma lista de armazenamento em memória chamada tasks_db para guardar dicionários de tarefas em app/main.py
-```
-
----
-
-### TASK-04 — POST /tasks
-
-**Prompt:**
-```
-Implemente o endpoint POST /tasks em app/main.py. Ele deve:
-- receber um body TaskCreate
-- gerar um id UUID
-- definir status como "pending" e created_at com o horário atual
-- salvar em tasks_db e retornar a tarefa com HTTP 201
-```
-
-**Teste rápido com curl:**
-```bash
-curl -X POST http://localhost:8000/tasks \
-  -H "Content-Type: application/json" \
-  -d '{"title": "Minha primeira tarefa", "description": "Criada via SDD"}'
-```
-
----
-
-### TASK-05 — GET /tasks
-
-**Prompt:**
-```
-Implemente o endpoint GET /tasks em app/main.py retornando todas as tarefas de tasks_db
-```
-
-**Teste:**
-```bash
-curl http://localhost:8000/tasks
-```
-
----
-
-### TASK-06 — PATCH /tasks/{id}
-
-**Prompt:**
-```
-Implemente PATCH /tasks/{id} em app/main.py. Encontre a tarefa por id em tasks_db,
-atualize seu status com TaskUpdate. Retorne 200 ou 404.
-```
-
-**Teste:**
-```bash
-curl -X PATCH http://localhost:8000/tasks/{ID} \
-  -H "Content-Type: application/json" \
-  -d '{"status": "done"}'
-```
-
----
-
-### TASK-07 — DELETE /tasks/{id}
-
-**Prompt:**
-```
-Implemente DELETE /tasks/{id} em app/main.py. Remova a tarefa por id de tasks_db.
-Retorne 204 em caso de sucesso e 404 se não encontrar.
-```
-
----
-
-## Etapa 7 — Criar e Executar Testes (`TASK-08`)
-
-**Objetivo:** Garantir que a API funciona conforme o especificado, criando testes automatizados.
-
-**O que fazer:**
-1. Crie o arquivo `tests/test_api.py`
-2. Use o Copilot para gerar os testes a partir dos critérios de aceite
-3. Execute e valide que todos passam
-
-**Copilot Chat:**
-```
-Com base nos critérios de aceite em .specs/requirements.md, crie testes automatizados
-para todos os endpoints em app/main.py usando pytest e httpx (TestClient do FastAPI).
-```
-
-**Rodar os testes:**
-```bash
-pytest tests/ -v
-```
-
-**Resultado esperado:** todos os testes passando, cobrindo os 5 endpoints (GET /, POST/GET/PATCH/DELETE /tasks).
-
-> **Conexão com o mundo real:** testes gerados a partir da spec fecham o ciclo SDD — o código
-> foi escrito para atender a spec, e os testes provam que ele realmente atende.
-
----
-
-## Etapa 8 — Validar com os Requisitos
-
-**Objetivo:** Confirmar que o código entrega o que foi especificado.
-
-**Prompt Copilot:**
-```
-@workspace Revise app/main.py contra os critérios de aceite em .specs/requirements.md
-e me diga se algum requisito está faltando ou foi implementado de forma incorreta
-```
-
-**Resultado esperado:** Copilot compara artefato de spec com código e aponta gaps — sem você precisar fazer isso manualmente.
-
----
-
-## Resultado Final
+## Resultado Esperado
 
 Ao concluir, você terá:
 
-| Artefato                   | Propósito                              |
-|----------------------------|----------------------------------------|
-
-| `.specs/constitution.md`   | Regras e convenções do projeto         |
-| `.specs/spec.yaml`         | Proposta e escopo do sistema           |
-| `.specs/requirements.md`   | O que o sistema deve fazer             |
-| `.specs/design.md`         | Como o sistema será construído         |
-| `.specs/tasks.md`          | Plano de execução incremental          |
-| `app/main.py`              | API funcional gerada com Copilot       |
-| `tests/test_api.py`        | Testes gerados a partir da spec        |
-| `docs/copilot-prompts.md`  | Prompts reutilizáveis para o time      |
+✅ Entendido por que **especificação guia IA**  
+✅ Vivenciado o fluxo **SDD em ciclo rápido**  
+✅ Visto Copilot ser **mais preciso com contexto**  
+✅ Gerado uma **API consistente** entre toda a turma  
+✅ Validado que **testes passam** contra a spec  
 
 ---
 
-## Referências
+## Referências Rápidas
 
 - [Spec Kit Quickstart](https://github.github.com/spec-kit/quickstart.html)
 - [FastAPI Docs](https://fastapi.tiangolo.com)
-- [GitHub Copilot Chat](https://docs.github.com/en/copilot/github-copilot-chat)
+- [GitHub Copilot Chat Docs](https://docs.github.com/en/copilot/github-copilot-chat)
+
+---
+
+## Notas para o Instrutor
+
+- **Tempo é crítico:** use um timer por etapa
+- **Não customize muito:** mantenha o baseline comum entre alunos
+- **Pausas de reflexão:** após cada etapa, peça feedback
+- **Foco em SDD, não em FastAPI:** o código é meio para o fim, não o foco
+
+Os prompts prontos estão em `docs/copilot-prompts.md` para referência rápida.
