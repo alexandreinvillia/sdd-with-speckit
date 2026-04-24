@@ -1,209 +1,89 @@
-# Hands-on: Spec-Driven Development com GitHub Copilot + Spec Kit
+# Spec-Driven Development com GitHub Copilot
 
-## O que é Spec-Driven Development (SDD)?
+Use especificação como contexto de engenharia para orientar o GitHub Copilot do refinamento de requisitos até a implementação.
 
-**SDD é uma abordagem que coloca especificação clara no centro do desenvolvimento.** Em vez de começar com código ou requisitos vagos, você:
+## Bem-vindo
 
-1. Define **claramente o que** o sistema deve fazer (especificação)
-2. Quebra **como** será implementado (design técnico)
-3. Organiza **em que ordem** (tarefas ordenadas)
-4. Gera código **guiado por esses artefatos** (implementação consistente)
+- Para quem é: desenvolvedores, arquitetos, tech leads, educadores e equipes que querem usar GitHub Copilot com mais previsibilidade e consistência.
+- O que você vai aprender: como aplicar Spec-Driven Development para reduzir ambiguidade, organizar decisões técnicas e melhorar a qualidade das entregas geradas com IA.
+- O que você vai construir: uma API simples de gestão de tarefas em FastAPI, implementada a partir de artefatos de especificação já preparados no repositório.
+- Pré-requisitos: conta no GitHub, acesso ao GitHub Copilot e noções básicas de leitura de código Python e APIs HTTP.
 
----
+Neste material, a preparação do ambiente fica na raiz do repositório e a execução do hands-on fica em [workshop/README.md](workshop/README.md).
 
-## Por que SDD + GitHub Copilot?
+## O que este repositório contém
 
-### Benefício 1: Redução de Ambiguidade
-- **Sem spec:** Copilot adivinha — endpoints inconsistentes, status HTTP diferentes, nomes de campos variáveis
-- **Com spec:** Copilot tem contexto — código consistente, alinhado com decisões técnicas já validadas
+Este repositório foi organizado para separar claramente preparação e execução:
 
-### Benefício 2: Velocidade e Qualidade
-- **Requisitos claros reduzem retrabalho:** cada desenvolvedor (humano ou IA) entende exatamente o que fazer
-- **Código gerado é verificável:** código não só funciona, como atende à spec de forma rastreável
+- [README.md](README.md): visão geral do projeto, contexto do workshop, pré-requisitos e setup do ambiente.
+- [workshop/README.md](workshop/README.md): guia prático do hands-on com o fluxo de SDD.
+- [.specs](.specs/): baseline dos artefatos de especificação usados como fonte de verdade.
+- [app](app/): código da aplicação criado durante o hands-on.
+- [docs/copilot-prompts.md](docs/copilot-prompts.md): prompts de apoio para instrutor e participantes.
 
-### Benefício 3: Colaboração em Escala
-- **Time inteiro fala a mesma linguagem:** especificação é o contrato entre produto, design e engenharia
-- **IA aprende as regras do projeto:** Copilot respeita convenções, arquitetura e padrões documentados
+## Por que usar SDD com GitHub Copilot?
 
----
+Spec-Driven Development coloca clareza antes de velocidade. Em vez de pedir código diretamente para a IA com contexto incompleto, o fluxo começa com artefatos que deixam explícitos escopo, regras, critérios de aceite, decisões técnicas e sequência de implementação.
 
-## O Fluxo SDD
+Com isso, o GitHub Copilot deixa de operar por inferência ampla e passa a trabalhar sobre um contexto mais restrito e verificável. O resultado prático é:
 
-```
-ESPECIFICAÇÃO → REQUISITOS → DESIGN → TASKS → CÓDIGO (guiado)
-     ↓              ↓           ↓       ↓          ↓
-   O que      Validar       Arquitetura   Ordem   IA segue
-   mudar?      critérios?    técnica?     lógica?  cada step
-```
+- Menos ambiguidade na interpretação do problema.
+- Mais consistência entre diferentes pessoas gerando código a partir da mesma base.
+- Melhor alinhamento entre requisitos, design, tasks e implementação.
+- Menos retrabalho durante revisão e validação.
+- Maior capacidade de ensinar, demonstrar e repetir o fluxo em equipe.
 
-**Cada etapa reduz ambiguidade:** você não avança até que a etapa anterior esteja clara.
+## Como preparar o ambiente
 
----
+### 1. Criar uma cópia do repositório
 
-## Neste Hands-on
+Use este repositório como template ou faça um fork para sua conta, conforme o fluxo adotado na sua turma.
 
-Você vai:
-1. Começar com **spec refinada** (não criar do zero)
-2. **Refinar requisitos** com Copilot (descobrir gaps)
-3. **Quebrar em tasks** (ordem clara de execução)
-4. **Gerar código** guiado pela spec (ver Copilot ser preciso)
-5. **Validar** que código atende spec (ciclo fechado)
+Se estiver usando o template do GitHub, você pode iniciar por aqui:
 
-**O resultado:** uma API pronta, código consistente entre todos, e prova viva de que especificação guia IA.
+[![](https://img.shields.io/badge/Copiar%20Exerc%C3%ADcio-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=alexandreinvillia&template_name=sdd-with-speckit&owner=%40me&name=spec-driven-development&description=Exerc%C3%ADcio:+Spec-Driven+Development+com+GitHub+Copilot&visibility=public)
 
----
+### 2. Abrir no GitHub Codespaces
 
-## Agenda do Hands-on (40 minutos)
+Depois de criar sua cópia do repositório:
 
-| Etapa | Comando Spec Kit | Tempo | O que acontece |
-|-------|------------------|-------|-----------|
-| **Setup** | `specify init` + integração | 2 min | Ambiente pronto para Spec Kit |
-| **Refinamento** | `/speckit.clarify` | 8 min | Identificar gaps nos requisitos |
-| **Tarefas** | `/speckit.tasks` | 5 min | Quebra incrementada e priorizada |
-| **Implementação** | `/speckit.implement` | 18 min | Copilot gera código guiado pela spec |
-| **Reflexão** | — | 7 min | Validação e fechamento |
+1. Acesse o repositório na sua conta.
+2. Clique em `Code`.
+3. Abra a aba `Codespaces`.
+4. Crie um novo Codespace.
 
----
+## Próximo passo
 
-## Passo 0 — Setup (2 minutos)
+Com o Codespace aberto, siga para [workshop/README.md](workshop/README.md) para validar o ambiente e executar o hands-on.
 
-**Terminal:**
-```bash
-specify init . --script sh
-specify integration install copilot
-```
+## Estrutura do repositório
 
-Isso cria `.specify/`, `.github/prompts/` e ativa os comandos `/speckit.*` no Copilot Chat.
-
----
-
-## Etapa 1 — Refinar Requisitos (8 minutos)
-
-**No Copilot Chat:**
-```
-/speckit.clarify Identifique critérios de aceite faltando em #.specs/requirements.md
-e casos de borda para endpoints de tarefas.
-```
-
-**O que observar:**
-- Copilot lê `.specs/spec.yaml` e `.specs/requirements.md` automaticamente
-- Aponta gaps que você e a turma talvez tivessem deixado passar
-- Você refina o arquivo, Copilot lê a versão nova — **feedback loop rápido**
-
-**Checkpoint:** `.specs/requirements.md` com critérios claros e sem ambiguidade.
-
----
-
-## Etapa 2 — Validar Tarefas (5 minutos)
-
-**No Copilot Chat:**
-```
-/speckit.tasks Com base em #.specs/design.md, quebre em tasks pequenas (< 5 min cada).
-Cada task deve ter: descrição clara, critério de aceite e prompt sugerido.
-```
-
-**O que observar:**
-- Task-01: Setup (criar `app/main.py` + health check)
-- Task-02: Modelos Pydantic
-- Task-03–06: Endpoints (POST, GET, PATCH, DELETE /tasks)
-- Task-07: Testes
-
-**Checkpoint:** `.specs/tasks.md` pronto, ordem clara e priorizada.
-
----
-
-## Etapa 3 — Implementar com Spec Kit (18 minutos)
-
-**No Copilot Chat, para cada task:**
-```
-/speckit.implement Implemente a TASK-01 em #.specs/tasks.md usando FastAPI.
-```
-
-**O que observar:**
-- Copilot usa o contexto de `.specs/design.md` — não precisa você explicar tudo
-- O código é consistente com a especificação
-- Cada task leva ~3–4 min com ajustes
-- Você roda para validar: `uvicorn app.main:app --reload`
-
-**Checkpoint:** `app/main.py` funcional com endpoints da spec.
-
----
-
-## Etapa 4 — Reflexão Final (7 minutos)
-
-**Pergunta chave para a turma:**
-
-> Se eu tivesse pedido ao Copilot "Crie uma API de tarefas" **sem especificação**,
-> qual seria a diferença?
-
-**Respostas esperadas:**
-- "Ficaria inconsistente entre as pessoas"
-- "Copilot teria que adivinhar os status HTTP, os nomes dos campos..."
-- "Sem spec, cada um faz de um jeito"
-
-**Ponto central:**
-> **SDD não é criar mais documentação. É usar documentação como arma para reduzir ambiguidade — tanto para o time quanto para a IA.**
-
-### Lições-chave
-1. **Spec = Contrato:** todos falam a mesma linguagem
-2. **IA mais precisa:** Copilot tem contexto, não adivinha
-3. **Consistência:** código gerado é alinhado ao design
-4. **Velocidade:** menos revisão, mais entrega
-
----
-
-## Estrutura de Baseline
-
-**O que já vem preenchido no repositório:**
-```
+```text
 .specs/
-  spec.yaml          ← Proposta do sistema
-  requirements.md    ← Requisitos funcionais + critérios de aceite
-  design.md          ← Design técnico (endpoints, modelos)
-  tasks.md           ← Plano de execução (será refinado)
+  spec.yaml
+  requirements.md
+  design.md
+  tasks.md
 app/
-  .gitkeep           ← main.py será criado na Etapa 3
+  .gitkeep
 docs/
-  copilot-prompts.md ← Prompts de referência para instrutor
+  copilot-prompts.md
+workshop/
+  README.md
 ```
 
-**O que será criado durante o hands-on:**
-```
-.specify/            ← Criado no Passo 0 (specify init)
-.github/
-  copilot-instructions.md  ← Integração Copilot
-  prompts/           ← Comandos `/speckit.*`
-app/
-  main.py            ← API criada na Etapa 3
-```
-
----
-
-## Resultado Esperado
-
-Ao concluir, você terá:
-
-✅ Entendido por que **especificação guia IA**  
-✅ Vivenciado o fluxo **SDD em ciclo rápido**  
-✅ Visto Copilot ser **mais preciso com contexto**  
-✅ Gerado uma **API consistente** entre toda a turma  
-✅ Validado que **testes passam** contra a spec  
-
----
-
-## Referências Rápidas
+## Recursos
 
 - [Spec Kit Quickstart](https://github.github.com/spec-kit/quickstart.html)
-- [FastAPI Docs](https://fastapi.tiangolo.com)
-- [GitHub Copilot Chat Docs](https://docs.github.com/en/copilot/github-copilot-chat)
+- [FastAPI Documentation](https://fastapi.tiangolo.com)
+- [GitHub Copilot Chat Documentation](https://docs.github.com/en/copilot/github-copilot-chat)
+- [Prompts do workshop](docs/copilot-prompts.md)
 
----
+## Notas para instrutores
 
-## Notas para o Instrutor
+- Mantenha o foco em SDD, não em FastAPI.
+- Use o código como demonstração do valor da especificação, não como objetivo principal.
+- Evite expandir o escopo além do CRUD básico de tarefas.
+- Preserve o baseline comum do repositório para reduzir variabilidade entre participantes.
 
-- **Tempo é crítico:** use um timer por etapa
-- **Não customize muito:** mantenha o baseline comum entre alunos
-- **Pausas de reflexão:** após cada etapa, peça feedback
-- **Foco em SDD, não em FastAPI:** o código é meio para o fim, não o foco
-
-Os prompts prontos estão em `docs/copilot-prompts.md` para referência rápida.
+&copy; 2025 GitHub &bull; [Código de Conduta](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)

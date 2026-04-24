@@ -1,4 +1,4 @@
-# Copilot Prompts — SDD em 40 Minutos
+# Copilot Prompts — Spec-Driven Development
 
 > Prompts organizados para o fluxo reduzido do hands-on.
 > Use no Copilot Chat (Ctrl+Alt+I) referenciando os artefatos de spec com #.
@@ -35,7 +35,7 @@ Revise #.specs/requirements.md e liste ambiguidades que possam causar implementa
 ## Etapa 2 — Refinar Tasks (tasks.md)
 
 ```
-/speckit.tasks Com base em #.specs/design.md, quebre em tasks pequenas (< 5 min cada),
+/speckit.tasks Com base em #.specs/design.md, quebre em tasks pequenas,
 com critério de pronto e ordem de implementação.
 ```
 
