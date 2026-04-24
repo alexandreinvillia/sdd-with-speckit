@@ -22,7 +22,7 @@ Este repositório foi organizado para separar claramente preparação e execuç�
 
 ## Contexto do Hands-on: Por que a spec já existe?
 
-Este repositório simula um projeto em fase de refinamento, não um projeto completamente novo. Os arquivos em [.specs](.specs/) representam o **baseline minimo** que emergiu de uma fase anterior de descoberta e escopo.
+Este repositório simula um projeto em fase de refinamento, não um projeto completamente novo. Os arquivos em [.specs](.specs/) representam o **baseline mínimo** que emergiu de uma fase anterior de descoberta e escopo.
 
 **Seu papel no hands-on** não é gerar spec do zero, mas:
 1. Refinar requisitos com Copilot (validar critérios de aceite, casos de borda, respostas de erro).
@@ -32,23 +32,23 @@ Este repositório simula um projeto em fase de refinamento, não um projeto comp
 
 ## Estado inicial esperado
 
-Antes de iniciar o hands-on, a estrutura esperada do repositório e:
+Antes de iniciar o hands-on, a estrutura esperada do repositório é:
 
 - [.specs](.specs/) com os artefatos-base (`spec.yaml`, `requirements.md`, `design.md`, `tasks.md`).
 - [app/.gitkeep](app/.gitkeep), sem [app/main.py](app/main.py) ainda.
 - [workshop/README.md](workshop/README.md).
 
-Neste ponto inicial, e esperado que ainda nao existam:
+Neste ponto inicial, é esperado que ainda não existam:
 
-- `.github/` (sera criada na etapa de integracao com Copilot).
+- `.github/` (será criada na etapa de integração com Copilot).
 - `.specify/` (artefato local gerado pelos comandos do Spec Kit).
-- [app/main.py](app/main.py) (criado durante a implementacao).
+- [app/main.py](app/main.py) (criado durante a implementação).
 
 ## O que surge durante o hands-on
 
-Ao executar os comandos do guia pratico, sao gerados artefatos de suporte e implementacao:
+Ao executar os comandos do guia prático, são gerados artefatos de suporte e implementação:
 
-- `.specify/` (local, nao versionado).
+- `.specify/` (local, não versionado).
 - `.github/` com prompts e agentes Speckit para os comandos `/speckit.*`.
 - [app/main.py](app/main.py) com a API em FastAPI.
 
