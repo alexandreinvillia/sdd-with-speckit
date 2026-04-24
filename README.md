@@ -69,16 +69,11 @@ Com isso, o GitHub Copilot deixa de operar por inferência ampla e passa a traba
 ### 1. Criar uma cópia do repositório
 
 Use este repositório como template ou faça um fork para sua conta, conforme o fluxo adotado na sua turma.
-
-Se estiver usando o template do GitHub, você pode iniciar por aqui:
-
-[![](https://img.shields.io/badge/Copiar%20Exerc%C3%ADcio-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=alexandreinvillia&template_name=sdd-with-speckit&owner=%40me&name=spec-driven-development&description=Exerc%C3%ADcio:+Spec-Driven+Development+com+GitHub+Copilot&visibility=public)
-
 ### 2. Abrir no GitHub Codespaces
 
-Depois de criar sua cópia do repositório:
+Depois de criar sua cópia do repositório, **acesse o repositório na sua conta** antes de criar o Codespace:
 
-1. Acesse o repositório na sua conta.
+1. Acesse o repositório na sua conta (ex: `github.com/seu-usuario/spec-driven-development`).
 2. Clique em `Code`.
 3. Abra a aba `Codespaces`.
 4. Crie um novo Codespace.
