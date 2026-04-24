@@ -85,27 +85,10 @@ Depois de criar sua cópia do repositório:
 
 Com o Codespace aberto, siga para [workshop/README.md](workshop/README.md) para validar o ambiente e executar o hands-on.
 
-## Estrutura do repositório
-
-```text
-.devcontainer/
-  devcontainer.json
-.specs/
-  spec.yaml
-  requirements.md
-  design.md
-  tasks.md
-app/
-  .gitkeep
-requirements.txt
-workshop/
-  README.md
-```
-
 ## Recursos
 
 - [Spec Kit Quickstart](https://github.github.com/spec-kit/quickstart.html)
 - [FastAPI Documentation](https://fastapi.tiangolo.com)
 - [GitHub Copilot Chat Documentation](https://docs.github.com/en/copilot/github-copilot-chat)
 
-&copy; 2025 GitHub &bull; [Código de Conduta](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+&copy; 2026 GitHub &bull; [Código de Conduta](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
