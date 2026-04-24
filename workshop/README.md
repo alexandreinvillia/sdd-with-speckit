@@ -19,6 +19,8 @@ specify integration install copilot
 ```
 
 Esses comandos habilitam os comandos `/speckit.*` no Copilot Chat.
+Durante essa etapa, e esperado que sejam criados artefatos como `.specify/`
+(local) e `.github/` (prompts e agents do Speckit).
 
 ## Objetivo do exercício
 
@@ -110,5 +112,4 @@ Você também pode pedir uma revisão contra as tasks:
 
 ## Material de apoio
 
-- [../docs/copilot-prompts.md](../docs/copilot-prompts.md)
 - [../README.md](../README.md)

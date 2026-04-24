@@ -19,7 +19,38 @@ Este repositório foi organizado para separar claramente preparação e execuç�
 - [workshop/README.md](workshop/README.md): guia prático do hands-on com o fluxo de SDD.
 - [.specs](.specs/): baseline dos artefatos de especificação usados como fonte de verdade.
 - [app](app/): código da aplicação criado durante o hands-on.
-- [docs/copilot-prompts.md](docs/copilot-prompts.md): prompts de apoio para instrutor e participantes.
+
+## Contexto do Hands-on: Por que a spec já existe?
+
+Este repositório simula um projeto em fase de refinamento, não um projeto completamente novo. Os arquivos em [.specs](.specs/) representam o **baseline minimo** que emergiu de uma fase anterior de descoberta e escopo.
+
+**Seu papel no hands-on** não é gerar spec do zero, mas:
+1. Refinar requisitos com Copilot (validar critérios de aceite, casos de borda, respostas de erro).
+2. Quebrar design em tasks sequenciadas e rastreáveis.
+3. Implementar seguindo a especificação como fonte de verdade.
+4. Validar que código e spec permanecem alinhados.
+
+## Estado inicial esperado
+
+Antes de iniciar o hands-on, a estrutura esperada do repositório e:
+
+- [.specs](.specs/) com os artefatos-base (`spec.yaml`, `requirements.md`, `design.md`, `tasks.md`).
+- [app/.gitkeep](app/.gitkeep), sem [app/main.py](app/main.py) ainda.
+- [workshop/README.md](workshop/README.md).
+
+Neste ponto inicial, e esperado que ainda nao existam:
+
+- `.github/` (sera criada na etapa de integracao com Copilot).
+- `.specify/` (artefato local gerado pelos comandos do Spec Kit).
+- [app/main.py](app/main.py) (criado durante a implementacao).
+
+## O que surge durante o hands-on
+
+Ao executar os comandos do guia pratico, sao gerados artefatos de suporte e implementacao:
+
+- `.specify/` (local, nao versionado).
+- `.github/` com prompts e agentes Speckit para os comandos `/speckit.*`.
+- [app/main.py](app/main.py) com a API em FastAPI.
 
 ## Por que usar SDD com GitHub Copilot?
 
@@ -59,6 +90,8 @@ Com o Codespace aberto, siga para [workshop/README.md](workshop/README.md) para 
 ## Estrutura do repositório
 
 ```text
+.devcontainer/
+  devcontainer.json
 .specs/
   spec.yaml
   requirements.md
@@ -66,8 +99,7 @@ Com o Codespace aberto, siga para [workshop/README.md](workshop/README.md) para 
   tasks.md
 app/
   .gitkeep
-docs/
-  copilot-prompts.md
+requirements.txt
 workshop/
   README.md
 ```
@@ -77,7 +109,6 @@ workshop/
 - [Spec Kit Quickstart](https://github.github.com/spec-kit/quickstart.html)
 - [FastAPI Documentation](https://fastapi.tiangolo.com)
 - [GitHub Copilot Chat Documentation](https://docs.github.com/en/copilot/github-copilot-chat)
-- [Prompts do workshop](docs/copilot-prompts.md)
 
 ## Notas para instrutores
 
