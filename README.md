@@ -70,18 +70,16 @@ Com isso, o GitHub Copilot deixa de operar por inferência ampla e passa a traba
 
 Use este repositório como template ou faça um fork para sua conta, conforme o fluxo adotado na sua turma.
 
-Se estiver usando o template do GitHub, você pode iniciar por aqui:
-
-[![](https://img.shields.io/badge/Copiar%20Exerc%C3%ADcio-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=alexandreinvillia&template_name=sdd-with-speckit&owner=%40me&name=spec-driven-development&description=Exerc%C3%ADcio:+Spec-Driven+Development+com+GitHub+Copilot&visibility=public)
-
 ### 2. Abrir no GitHub Codespaces
 
 Depois de criar sua cópia do repositório:
 
-1. Acesse o repositório na sua conta.
+1. Abra o repositório recém-criado na sua conta (ex: `github.com/seu-usuario/spec-driven-development`).
 2. Clique em `Code`.
 3. Abra a aba `Codespaces`.
 4. Crie um novo Codespace.
+
+> **Importante:** evite criar o Codespace imediatamente após gerar o template. Primeiro abra o repositório criado e, só então, inicie o Codespace.
 
 ## Próximo passo
 
@@ -109,12 +107,5 @@ workshop/
 - [Spec Kit Quickstart](https://github.github.com/spec-kit/quickstart.html)
 - [FastAPI Documentation](https://fastapi.tiangolo.com)
 - [GitHub Copilot Chat Documentation](https://docs.github.com/en/copilot/github-copilot-chat)
-
-## Notas para instrutores
-
-- Mantenha o foco em SDD, não em FastAPI.
-- Use o código como demonstração do valor da especificação, não como objetivo principal.
-- Evite expandir o escopo além do CRUD básico de tarefas.
-- Preserve o baseline comum do repositório para reduzir variabilidade entre participantes.
 
 &copy; 2025 GitHub &bull; [Código de Conduta](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
