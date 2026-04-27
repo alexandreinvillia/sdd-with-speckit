@@ -1,4 +1,4 @@
-# Baseline minimo para a Etapa 1 (refinar com /speckit.specify)
+# Baseline mínimo para a Etapa 1 (refinar com /speckit.specify)
 
 id: task-manager-api
 version: "0.1"
@@ -17,7 +17,7 @@ context:
     - Desenvolvedores individuais
     - Times pequenos
   out_of_scope:
-    - Autenticacao
+    - Autenticação
     - Banco de dados
 
 features:
@@ -49,7 +49,7 @@ stack:
   environment: GitHub Codespaces
 
 constraints:
-  - Codigo simples e didatico
+  - Código simples e didático
   - Features implementadas em passos curtos
 
 references:

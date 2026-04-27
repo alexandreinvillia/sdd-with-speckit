@@ -1,10 +1,10 @@
-# Requirements (baseline minimo)
+# Requirements (baseline mínimo)
 
 Refinar na Etapa 1 com base em .specs/spec.yaml usando /speckit.clarify (opcional: /speckit.checklist).
 
-## Visao Geral
+## Visão Geral
 
-API REST para gerenciamento de tarefas com armazenamento em memoria.
+API REST para gerenciamento de tarefas com armazenamento em memória.
 
 ## Requisitos Funcionais
 
@@ -14,11 +14,11 @@ API REST para gerenciamento de tarefas com armazenamento em memoria.
 - RF04: PATCH /tasks/{id} atualiza status (pending, in_progress, done), retorna 200 ou 404.
 - RF05: DELETE /tasks/{id} remove tarefa, retorna 204 ou 404.
 
-## Requisitos Nao Funcionais
+## Requisitos Não Funcionais
 
 - RNF01: API responde em JSON.
 - RNF02: Erros retornam mensagem descritiva.
-- RNF03: Codigo legivel para fins didaticos.
+- RNF03: Código legível para fins didáticos.
 
 ## Modelo de Dados
 
@@ -31,5 +31,5 @@ API REST para gerenciamento de tarefas com armazenamento em memoria.
 ## Fora do escopo
 
 - Banco de dados
-- Autenticacao e autorizacao
-- Paginacao
+- Autenticação e autorização
+- Paginação

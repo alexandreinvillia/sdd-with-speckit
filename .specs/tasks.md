@@ -1,10 +1,10 @@
-# Tasks (baseline minimo)
+# Tasks (baseline mínimo)
 
 Refinar na Etapa 2 com base em .specs/design.md usando /speckit.tasks.
 
-## Convencao de Status
+## Convenção de Status
 
-- [ ] nao iniciado
+- [ ] não iniciado
 - [~] em andamento
 - [x] concluido
 
@@ -12,15 +12,15 @@ Refinar na Etapa 2 com base em .specs/design.md usando /speckit.tasks.
 
 - [ ] TASK-01 Criar app/main.py e health check
 - [ ] TASK-02 Criar modelos Pydantic
-- [ ] TASK-03 Criar storage em memoria
+- [ ] TASK-03 Criar storage em memória
 - [ ] TASK-04 Implementar POST /tasks
 - [ ] TASK-05 Implementar GET /tasks
 - [ ] TASK-06 Implementar PATCH /tasks/{id}
 - [ ] TASK-07 Implementar DELETE /tasks/{id}
 - [ ] TASK-08 Criar e executar testes
 
-## Criterios de Pronto por Task
+## Critérios de Pronto por Task
 
-- Codigo executa sem erro local no Codespace
-- Criterios de aceite relacionados atendidos
-- Task marcada como concluida
+- Código executa sem erro local no Codespace
+- Critérios de aceite relacionados atendidos
+- Task marcada como concluída

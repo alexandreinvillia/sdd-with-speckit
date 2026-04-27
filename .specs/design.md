@@ -1,10 +1,10 @@
-# Design Tecnico (baseline minimo)
+# Design Técnico (baseline mínimo)
 
 Usar como base entre as Etapas 2 e 3: validar tasks em .specs/tasks.md e implementar com /speckit.implement.
 
 ## Arquitetura
 
-Aplicacao FastAPI monolitica simples com armazenamento em memoria.
+Aplicação FastAPI monolítica simples com armazenamento em memória.
 
 ## Estrutura de Arquivos
 
@@ -28,16 +28,16 @@ Aplicacao FastAPI monolitica simples com armazenamento em memoria.
 - TaskUpdate(status)
 - Task(id, title, description, status, created_at)
 
-## Estrategia de Persistencia
+## Estratégia de Persistência
 
-- Lista em memoria (tasks_db)
+- Lista em memória (tasks_db)
 
 ## Tratamento de Erros
 
-- 404 para recurso nao encontrado
-- 422 para payload invalido (validacao FastAPI/Pydantic)
+- 404 para recurso não encontrado
+- 422 para payload inválido (validação FastAPI/Pydantic)
 
-## Decisoes de Design
+## Decisões de Design
 
 - Sem banco para manter foco no fluxo SDD
-- UUID para identificacao
+- UUID para identificação

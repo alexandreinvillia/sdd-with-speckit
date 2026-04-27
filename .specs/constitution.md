@@ -2,63 +2,63 @@
 
 ## Core Principles
 
-### I. Stack e Escopo Obrigatorios
-O projeto MUST ser implementado em Python 3.11 usando FastAPI. O escopo MUST ser
-uma API HTTP para gestao de tarefas pessoais. Mudancas de stack, adicao de
-frontend dedicado ou troca de framework backend nao sao permitidas sem emenda
-formal desta constituicao.
+### I. Stack e Escopo Obrigatórios
+O projeto DEVE ser implementado em Python 3.11 usando FastAPI. O escopo DEVE ser
+uma API HTTP para gestão de tarefas pessoais. Mudanças de stack, adição de
+frontend dedicado ou troca de framework backend não são permitidas sem emenda
+formal desta constituição.
 
-### II. Dados Somente em Memoria
-Os dados MUST ser mantidos exclusivamente em memoria de processo (ex.: listas e
-dicionarios Python). Reiniciar a aplicacao MUST limpar o estado. Persistencia em
-arquivo, cache externo ou qualquer camada de armazenamento permanente nao e
+### II. Dados Somente em Memória
+Os dados DEVEM ser mantidos exclusivamente em memória de processo (ex.: listas e
+dicionários Python). Reiniciar a aplicação DEVE limpar o estado. Persistência em
+arquivo, cache externo ou qualquer camada de armazenamento permanente não é
 permitida nesta fase.
 
-### III. Sem Autenticacao e Sem Banco de Dados
-O projeto MUST permanecer sem autenticacao, autorizacao, gestao de sessoes e sem
-dependencia de banco de dados. Bibliotecas de ORM, migracoes e infraestrutura de
-credenciais MUST NOT ser introduzidas.
+### III. Sem Autenticação e Sem Banco de Dados
+O projeto DEVE permanecer sem autenticação, autorização, gestão de sessões e sem
+dependência de banco de dados. Bibliotecas de ORM, migrações e infraestrutura de
+credenciais NÃO DEVEM ser introduzidas.
 
 ### IV. Contrato HTTP Correto e Consistente
-Cada endpoint MUST retornar status HTTP coerente com o resultado da operacao,
-incluindo respostas de erro previsiveis e payloads claros. Como regra geral:
-sucesso de leitura/atualizacao com 200, criacao com 201, exclusao sem corpo com
-204, entrada invalida com 400/422 e recurso inexistente com 404.
+Cada endpoint DEVE retornar status HTTP coerente com o resultado da operação,
+incluindo respostas de erro previsíveis e payloads claros. Como regra geral:
+sucesso de leitura/atualização com 200, criação com 201, exclusão sem corpo com
+204, entrada inválida com 400/422 e recurso inexistente com 404.
 
-### V. Codigo Didatico para Iniciantes
-O codigo MUST priorizar legibilidade: nomes explicitos, funcoes curtas,
-responsabilidades simples e organizacao direta. Abstracoes desnecessarias,
-metaprogramacao e padroes avancados sem ganho claro MUST ser evitados. Tipagem e
-comentarios curtos sao incentivados quando melhorarem entendimento.
+### V. Código Didático para Iniciantes
+O código DEVE priorizar legibilidade: nomes explícitos, funções curtas,
+responsabilidades simples e organização direta. Abstrações desnecessárias,
+metaprogramação e padrões avançados sem ganho claro DEVEM ser evitados. Tipagem e
+comentários curtos são incentivados quando melhorarem entendimento.
 
-## Restricoes Tecnicas e de Qualidade
+## Restrições Técnicas e de Qualidade
 
-- Dependencias MUST ser minimas e justificadas.
-- Modelos de entrada e saida MUST usar validacao explicita do FastAPI/Pydantic.
-- Erros de regra de negocio MUST ser tratados de forma uniforme e previsivel.
-- O projeto SHOULD manter cobertura de testes para fluxos principais e casos de
+- Dependências DEVEM ser mínimas e justificadas.
+- Modelos de entrada e saída DEVEM usar validação explícita do FastAPI/Pydantic.
+- Erros de regra de negócio DEVEM ser tratados de forma uniforme e previsível.
+- O projeto DEVERIA manter cobertura de testes para fluxos principais e casos de
   erro esperados.
 
-## Fluxo de Desenvolvimento e Revisao
+## Fluxo de Desenvolvimento e Revisão
 
-- Toda alteracao de comportamento MUST manter alinhamento com
+- Toda alteração de comportamento DEVE manter alinhamento com
   .specs/spec.yaml, .specs/requirements.md e .specs/design.md.
-- Implementacao MUST seguir ordem de tarefas em .specs/tasks.md, com entregas
-  incrementais e verificaveis.
-- Revisoes de codigo MUST checar conformidade com esta constituicao,
-  especialmente escopo tecnico, simplicidade e contrato HTTP.
+- Implementação DEVE seguir ordem de tarefas em .specs/tasks.md, com entregas
+  incrementais e verificáveis.
+- Revisões de código DEVEM checar conformidade com esta constituição,
+  especialmente escopo técnico, simplicidade e contrato HTTP.
 
 ## Governance
 
-Esta constituicao prevalece sobre preferencias locais e exemplos temporarios.
-Emendas MUST registrar motivacao, impacto e versao semantica resultante.
+Esta constituição prevalece sobre preferências locais e exemplos temporários.
+Emendas DEVEM registrar motivação, impacto e versão semântica resultante.
 
-Politica de versao:
-- MAJOR para mudancas incompativeis de principios ou remocao de garantias.
-- MINOR para novos principios, secoes ou expansao normativa material.
-- PATCH para clarificacoes editoriais sem alterar o significado normativo.
+Política de versão:
+- MAJOR para mudanças incompatíveis de princípios ou remoção de garantias.
+- MINOR para novos princípios, seções ou expansão normativa material.
+- PATCH para clarificações editoriais sem alterar o significado normativo.
 
-Conformidade MUST ser revisada em cada PR e revalidada ao final de cada etapa
+Conformidade DEVE ser revisada em cada PR e revalidada ao final de cada etapa
 do fluxo Speckit.
 
 **Version**: 1.0.0 | **Ratified**: 2026-04-20 | **Last Amended**: 2026-04-20
