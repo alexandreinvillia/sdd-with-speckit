@@ -1,6 +1,6 @@
-# SDD with Speckit Constitution
+# Constituição SDD com Speckit
 
-## Core Principles
+## Princípios Centrais
 
 ### I. Stack e Escopo Obrigatórios
 O projeto DEVE ser implementado em Python 3.11 usando FastAPI. O escopo DEVE ser
@@ -48,7 +48,7 @@ comentários curtos são incentivados quando melhorarem entendimento.
 - Revisões de código DEVEM checar conformidade com esta constituição,
   especialmente escopo técnico, simplicidade e contrato HTTP.
 
-## Governance
+## Governança
 
 Esta constituição prevalece sobre preferências locais e exemplos temporários.
 Emendas DEVEM registrar motivação, impacto e versão semântica resultante.
@@ -61,4 +61,4 @@ Política de versão:
 Conformidade DEVE ser revisada em cada PR e revalidada ao final de cada etapa
 do fluxo Speckit.
 
-**Version**: 1.0.0 | **Ratified**: 2026-04-20 | **Last Amended**: 2026-04-20
+**Versão**: 1.0.0 | **Ratificada em**: 2026-04-20 | **Última Emenda**: 2026-04-20
