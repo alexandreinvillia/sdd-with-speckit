@@ -4,9 +4,9 @@ Use especificação como contexto de engenharia para orientar o GitHub Copilot d
 
 ## Bem-vindo
 
-- Para quem é: desenvolvedores, arquitetos, tech leads, educadores e equipes que querem usar GitHub Copilot com mais previsibilidade e consistência.
-- O que você vai aprender: como aplicar Spec-Driven Development para reduzir ambiguidade, organizar decisões técnicas e melhorar a qualidade das entregas geradas com IA.
-- O que você vai construir: uma API simples de gestão de tarefas em FastAPI, implementada a partir de artefatos de especificação já preparados no repositório.
+- **Para quem é:** desenvolvedores, arquitetos, tech leads, educadores e equipes que querem usar GitHub Copilot com mais previsibilidade e consistência.
+- **O que você vai aprender:** como aplicar Spec-Driven Development para reduzir ambiguidade, organizar decisões técnicas e melhorar a qualidade das entregas geradas com IA.
+- **O que você vai construir:** uma API simples de gestão de tarefas em FastAPI, implementada a partir de artefatos de especificação já preparados no repositório.
 - Pré-requisitos: conta no GitHub, acesso ao GitHub Copilot e noções básicas de leitura de código Python e APIs HTTP.
 
 Neste material, a preparação do ambiente fica na raiz do repositório e a execução do hands-on fica em [workshop/README.md](workshop/README.md).
@@ -24,13 +24,13 @@ Este repositório foi organizado para separar claramente preparação e execuç�
 
 Este repositório simula um projeto em fase de refinamento, não um projeto completamente novo. Os arquivos em [.specs](.specs/) representam o **baseline mínimo** que emergiu de uma fase anterior de descoberta e escopo.
 
-**Seu papel no hands-on** não é gerar spec do zero, mas:
+**Neste hands-on, a proposta não é gerar a spec do zero, mas sim:**
 1. Refinar requisitos com Copilot (validar critérios de aceite, casos de borda, respostas de erro).
 2. Quebrar design em tasks sequenciadas e rastreáveis.
 3. Implementar seguindo a especificação como fonte de verdade.
 4. Validar que código e spec permanecem alinhados.
 
-## Estado inicial esperado
+## Estado inicial do repositório
 
 Antes de iniciar o hands-on, a estrutura esperada do repositório é:
 
@@ -38,19 +38,11 @@ Antes de iniciar o hands-on, a estrutura esperada do repositório é:
 - [app/.gitkeep](app/.gitkeep), sem [app/main.py](app/main.py) ainda.
 - [workshop/README.md](workshop/README.md).
 
-Neste ponto inicial, é esperado que ainda não existam:
+Após preparar o ambiente e executar o fluxo do guia prático:
 
-- `.github/` (será criada na etapa de integração com Copilot).
-- `.specify/` (artefato local gerado pelos comandos do Spec Kit).
-- [app/main.py](app/main.py) (criado durante a implementação).
-
-## O que surge durante o hands-on
-
-Ao executar os comandos do guia prático, são gerados artefatos de suporte e implementação:
-
-- `.specify/` (local, não versionado).
-- `.github/` com prompts e agentes Speckit para os comandos `/speckit.*`.
-- [app/main.py](app/main.py) com a API em FastAPI.
+- `.specify/` é criada localmente (não versionada).
+- `.github/` é criada com prompts e agentes Speckit para os comandos `/speckit.*`.
+- [app/main.py](app/main.py) é criado durante a implementação da API em FastAPI.
 
 ## Por que usar SDD com GitHub Copilot?
 
